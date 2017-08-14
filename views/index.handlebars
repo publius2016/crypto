@@ -1,0 +1,211 @@
+<div id="btc">
+  <h1>BTC/USD</h1>
+  <p>Last Price: $<span id="btc_last_price"></span></p>
+  <p>24HR Low: $<span id="btc_low"></span></p>
+  <p>24HR High: $<span id="btc_high"></span></p>
+  <p>24HR Volume: <span id="btc_vol"></span></p>
+  <p>Daily Chg: $<span id="btc_chg"></span></p>
+  <p>Daily Chg %: <span id="btc_percChg"></span>%</p>
+</div>
+
+<div id="ltc">
+  <h1>LTC/USD</h1>
+  <p>Last Price: $<span id="ltc_last_price"></span></p>
+  <p>24HR Low: $<span id="ltc_low"></span></p>
+  <p>24HR High: $<span id="ltc_high"></span></p>
+  <p>24HR Volume: <span id="ltc_vol"></span></p>
+  <p>Daily Chg: $<span id="ltc_chg"></span></p>
+  <p>Daily Chg %: <span id="ltc_percChg"></span>%</p>
+</div>
+
+<div id="eth">
+  <h1>ETH/USD</h1>
+  <p>Last Price: $<span id="eth_last_price"></span></p>
+  <p>24HR Low: $<span id="eth_low"></span></p>
+  <p>24HR High: $<span id="eth_high"></span></p>
+  <p>24HR Volume: <span id="eth_vol"></span></p>
+  <p>Daily Chg: $<span id="eth_chg"></span></p>
+  <p>Daily Chg %: <span id="eth_percChg"></span>%</p>
+</div>
+
+<div id="iot">
+  <h1>IOT/USD</h1>
+  <p>Last Price: $<span id="iot_last_price"></span></p>
+  <p>24HR Low: $<span id="iot_low"></span></p>
+  <p>24HR High: $<span id="iot_high"></span></p>
+  <p>24HR Volume: <span id="iot_vol"></span></p>
+  <p>Daily Chg: $<span id="iot_chg"></span></p>
+  <p>Daily Chg %: <span id="iot_percChg"></span>%</p>
+</div>
+
+<div id="etc">
+  <h1>ETC/USD</h1>
+  <p>Last Price: $<span id="etc_last_price"></span></p>
+  <p>24HR Low: $<span id="etc_low"></span></p>
+  <p>24HR High: $<span id="etc_high"></span></p>
+  <p>24HR Volume: <span id="etc_vol"></span></p>
+  <p>Daily Chg: $<span id="etc_chg"></span></p>
+  <p>Daily Chg %: <span id="etc_percChg"></span>%</p>
+</div>
+
+<div id="dsh">
+  <h1>DSH/USD</h1>
+  <p>Last Price: $<span id="dsh_last_price"></span></p>
+  <p>24HR Low: $<span id="dsh_low"></span></p>
+  <p>24HR High: $<span id="dsh_high"></span></p>
+  <p>24HR Volume: <span id="dsh_vol"></span></p>
+  <p>Daily Chg: $<span id="dsh_chg"></span></p>
+  <p>Daily Chg %: <span id="dsh_percChg"></span>%</p>
+</div>
+
+<div id="xrp">
+  <h1>XRP/USD</h1>
+  <p>Last Price: $<span id="xrp_last_price"></span></p>
+  <p>24HR Low: $<span id="xrp_low"></span></p>
+  <p>24HR High: $<span id="xrp_high"></span></p>
+  <p>24HR Volume: <span id="xrp_vol"></span></p>
+  <p>Daily Chg: $<span id="xrp_chg"></span></p>
+  <p>Daily Chg %: <span id="xrp_percChg"></span>%</p>
+</div>
+
+<div id="bcc">
+  <h1>BCC/USD</h1>
+  <p>Last Price: $<span id="bcc_last_price"></span></p>
+  <p>24HR Low: $<span id="bcc_low"></span></p>
+  <p>24HR High: $<span id="bcc_high"></span></p>
+  <p>24HR Volume: <span id="bcc_vol"></span></p>
+  <p>Daily Chg: $<span id="bcc_chg"></span></p>
+  <p>Daily Chg %: <span id="bcc_percChg"></span>%</p>
+</div>
+
+<div id="xmr">
+  <h1>XMR/USD</h1>
+  <p>Last Price: $<span id="xmr_last_price"></span></p>
+  <p>24HR Low: $<span id="xmr_low"></span></p>
+  <p>24HR High: $<span id="xmr_high"></span></p>
+  <p>24HR Volume: <span id="xmr_vol"></span></p>
+  <p>Daily Chg: $<span id="xmr_chg"></span></p>
+  <p>Daily Chg %: <span id="xmr_percChg"></span>%</p>
+</div>
+
+<script>
+  var socket = io.connect('/');
+
+  socket.on('btc', function (data) {
+    console.log('BTC: ', data.message.LAST_PRICE);
+
+    $("#btc span").empty();
+
+    $("#btc_last_price").append(data.message.LAST_PRICE);
+    $("#btc_low").append(data.message.LOW);
+    $("#btc_high").append(data.message.HIGH);
+    $("#btc_vol").append(data.message.VOLUME);
+    $("#btc_chg").append(data.message.DAILY_CHANGE);
+    $("#btc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('ltc', function (data) {
+    console.log('LTC: ', data.message.LAST_PRICE);
+
+    $("#ltc span").empty();
+
+    $("#ltc_last_price").append(data.message.LAST_PRICE);
+    $("#ltc_low").append(data.message.LOW);
+    $("#ltc_high").append(data.message.HIGH);
+    $("#ltc_vol").append(data.message.VOLUME);
+    $("#ltc_chg").append(data.message.DAILY_CHANGE);
+    $("#ltc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('eth', function (data) {
+    console.log('ETH: ', data.message.LAST_PRICE);
+
+    $("#eth span").empty();
+
+    $("#eth_last_price").append(data.message.LAST_PRICE);
+    $("#eth_low").append(data.message.LOW);
+    $("#eth_high").append(data.message.HIGH);
+    $("#eth_vol").append(data.message.VOLUME);
+    $("#eth_chg").append(data.message.DAILY_CHANGE);
+    $("#eth_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('iot', function (data) {
+    console.log('IOT: ', data.message.LAST_PRICE);
+
+    $("#iot span").empty();
+
+    $("#iot_last_price").append(data.message.LAST_PRICE);
+    $("#iot_low").append(data.message.LOW);
+    $("#iot_high").append(data.message.HIGH);
+    $("#iot_vol").append(data.message.VOLUME);
+    $("#iot_chg").append(data.message.DAILY_CHANGE);
+    $("#iot_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('etc', function (data) {
+    console.log('ETC: ', data.message.LAST_PRICE);
+
+    $("#etc span").empty();
+
+    $("#etc_last_price").append(data.message.LAST_PRICE);
+    $("#etc_low").append(data.message.LOW);
+    $("#etc_high").append(data.message.HIGH);
+    $("#etc_vol").append(data.message.VOLUME);
+    $("#etc_chg").append(data.message.DAILY_CHANGE);
+    $("#etc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('dsh', function (data) {
+    console.log('DSH: ', data.message.LAST_PRICE);
+
+    $("#dsh span").empty();
+
+    $("#dsh_last_price").append(data.message.LAST_PRICE);
+    $("#dsh_low").append(data.message.LOW);
+    $("#dsh_high").append(data.message.HIGH);
+    $("#dsh_vol").append(data.message.VOLUME);
+    $("#dsh_chg").append(data.message.DAILY_CHANGE);
+    $("#dsh_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('xrp', function (data) {
+    console.log('XRP: ', data.message.LAST_PRICE);
+
+    $("#xrp span").empty();
+
+    $("#xrp_last_price").append(data.message.LAST_PRICE);
+    $("#xrp_low").append(data.message.LOW);
+    $("#xrp_high").append(data.message.HIGH);
+    $("#xrp_vol").append(data.message.VOLUME);
+    $("#xrp_chg").append(data.message.DAILY_CHANGE);
+    $("#xrp_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('bcc', function (data) {
+    console.log('BCC: ', data.message.LAST_PRICE);
+
+    $("#bcc span").empty();
+
+    $("#bcc_last_price").append(data.message.LAST_PRICE);
+    $("#bcc_low").append(data.message.LOW);
+    $("#bcc_high").append(data.message.HIGH);
+    $("#bcc_vol").append(data.message.VOLUME);
+    $("#bcc_chg").append(data.message.DAILY_CHANGE);
+    $("#bcc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+  socket.on('xmr', function (data) {
+    console.log('XMR: ', data.message.LAST_PRICE);
+
+    $("#xmr span").empty();
+
+    $("#xmr_last_price").append(data.message.LAST_PRICE);
+    $("#xmr_low").append(data.message.LOW);
+    $("#xmr_high").append(data.message.HIGH);
+    $("#xmr_vol").append(data.message.VOLUME);
+    $("#xmr_chg").append(data.message.DAILY_CHANGE);
+    $("#xmr_percChg").append(data.message.DAILY_CHANGE_PERC);
+  });
+
+</script>
