@@ -6,6 +6,7 @@
   <p>24HR Volume: <span id="btc_vol"></span></p>
   <p>Daily Chg: $<span id="btc_chg"></span></p>
   <p>Daily Chg %: <span id="btc_percChg"></span>%</p>
+  <canvas id="btcChart"></canvas>
 </div>
 
 <div id="ltc">
@@ -16,6 +17,7 @@
   <p>24HR Volume: <span id="ltc_vol"></span></p>
   <p>Daily Chg: $<span id="ltc_chg"></span></p>
   <p>Daily Chg %: <span id="ltc_percChg"></span>%</p>
+  <canvas id="ltcChart"></canvas>
 </div>
 
 <div id="eth">
@@ -88,11 +90,18 @@
   <p>Daily Chg %: <span id="xmr_percChg"></span>%</p>
 </div>
 
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
+
 <script>
+
   var socket = io.connect('/');
 
   socket.on('btc', function (data) {
-    console.log('BTC: ', data.message.LAST_PRICE);
+    // console.log('BTC: ', data.message.LAST_PRICE);
 
     $("#btc span").empty();
 
@@ -105,7 +114,7 @@
   });
 
   socket.on('ltc', function (data) {
-    console.log('LTC: ', data.message.LAST_PRICE);
+    // console.log('LTC: ', data.message.LAST_PRICE);
 
     $("#ltc span").empty();
 
@@ -118,7 +127,7 @@
   });
 
   socket.on('eth', function (data) {
-    console.log('ETH: ', data.message.LAST_PRICE);
+    // console.log('ETH: ', data.message.LAST_PRICE);
 
     $("#eth span").empty();
 
@@ -131,7 +140,7 @@
   });
 
   socket.on('iot', function (data) {
-    console.log('IOT: ', data.message.LAST_PRICE);
+    // console.log('IOT: ', data.message.LAST_PRICE);
 
     $("#iot span").empty();
 
@@ -144,7 +153,7 @@
   });
 
   socket.on('etc', function (data) {
-    console.log('ETC: ', data.message.LAST_PRICE);
+    // console.log('ETC: ', data.message.LAST_PRICE);
 
     $("#etc span").empty();
 
@@ -157,7 +166,7 @@
   });
 
   socket.on('dsh', function (data) {
-    console.log('DSH: ', data.message.LAST_PRICE);
+    // console.log('DSH: ', data.message.LAST_PRICE);
 
     $("#dsh span").empty();
 
@@ -170,7 +179,7 @@
   });
 
   socket.on('xrp', function (data) {
-    console.log('XRP: ', data.message.LAST_PRICE);
+    // console.log('XRP: ', data.message.LAST_PRICE);
 
     $("#xrp span").empty();
 
@@ -183,7 +192,7 @@
   });
 
   socket.on('bcc', function (data) {
-    console.log('BCC: ', data.message.LAST_PRICE);
+    // console.log('BCC: ', data.message.LAST_PRICE);
 
     $("#bcc span").empty();
 
@@ -196,7 +205,7 @@
   });
 
   socket.on('xmr', function (data) {
-    console.log('XMR: ', data.message.LAST_PRICE);
+    // console.log('XMR: ', data.message.LAST_PRICE);
 
     $("#xmr span").empty();
 
@@ -207,5 +216,70 @@
     $("#xmr_chg").append(data.message.DAILY_CHANGE);
     $("#xmr_percChg").append(data.message.DAILY_CHANGE_PERC);
   });
+
+</script>
+
+
+
+<script>
+
+var btcTime = [];
+var btcClose = [];
+var ltcTime = [];
+var ltcClose = [];
+
+
+  $.get("/btc", (data) => {
+
+    for (var i = 0; i < data.Data.length; i++) {
+      btcTime.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
+      btcClose.push(data.Data[i].close);
+    }
+
+    var ctx = document.getElementById('btcChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: btcTime,
+          datasets: [{
+              label: "BTC/USD Closing Price",
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: btcClose,
+          }]
+      },
+      options: {}
+    });
+  });
+
+  $.get("/ltc", (data) => {
+
+    for (var i = 0; i < data.Data.length; i++) {
+      ltcTime.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
+      ltcClose.push(data.Data[i].close);
+    }
+
+    var ctx = document.getElementById('ltcChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ltcTime,
+          datasets: [{
+              label: "LTC/USD Closing Price",
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: ltcClose,
+          }]
+      },
+      options: {}
+    });
+  });
+
+
+
+
+
+
+
 
 </script>

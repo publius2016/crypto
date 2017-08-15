@@ -64,22 +64,42 @@ module.exports = function (app, path, bodyParser, request, BFX, io) {
       xmr.push(ticker);
     }
 
-    if (btc.length > 0 && ltc.length > 0 && eth.length > 0 && iot.length > 0 && etc.length > 0 && dsh.length > 0 && xrp.length > 0 && bcc.length > 0 && xmr.length > 0) {
-      console.log("BTC: " + btc[0].LAST_PRICE);
-      console.log("LTC: " + ltc[0].LAST_PRICE);
-      console.log("ETH: " + eth[0].LAST_PRICE);
-      console.log("IOT: " + iot[0].LAST_PRICE);
-      console.log("ETC: " + etc[0].LAST_PRICE);
-      console.log("DSH: " + dsh[0].LAST_PRICE);
-      console.log("XRP: " + xrp[0].LAST_PRICE);
-      console.log("BCC: " + bcc[0].LAST_PRICE);
-      console.log("XMR: " + xmr[0].LAST_PRICE);
-    }
+    // if (btc.length > 0 && ltc.length > 0 && eth.length > 0 && iot.length > 0 && etc.length > 0 && dsh.length > 0 && xrp.length > 0 && bcc.length > 0 && xmr.length > 0) {
+    //   console.log("BTC: " + btc[0].LAST_PRICE);
+    //   console.log("LTC: " + ltc[0].LAST_PRICE);
+    //   console.log("ETH: " + eth[0].LAST_PRICE);
+    //   console.log("IOT: " + iot[0].LAST_PRICE);
+    //   console.log("ETC: " + etc[0].LAST_PRICE);
+    //   console.log("DSH: " + dsh[0].LAST_PRICE);
+    //   console.log("XRP: " + xrp[0].LAST_PRICE);
+    //   console.log("BCC: " + bcc[0].LAST_PRICE);
+    //   console.log("XMR: " + xmr[0].LAST_PRICE);
+    // }
 
   });
 
   app.get("/", (req, res) => {
     res.render("index");
+  });
+
+  app.get("/btc", (req, res) => {
+    var btcURL = "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
+    request(btcURL, (err, response, body) => {
+      var btcHisto = JSON.parse(body);
+      // console.log(btcHisto);
+      res.send(btcHisto);
+
+    });
+  });
+
+  app.get("/ltc", (req, res) => {
+    var btcURL = "https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
+    request(btcURL, (err, response, body) => {
+      var ltcHisto = JSON.parse(body);
+      // console.log(btcHisto);
+      res.send(ltcHisto);
+
+    });
   });
 
   io.on('connection', function (socket) {
