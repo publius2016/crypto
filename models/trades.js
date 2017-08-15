@@ -1,25 +1,29 @@
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-
-    // burger_name: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false
-    // },
-    // devoured: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false
-    // }
-
-  });
-
-  return User;
-
   var Trade = sequelize.define("Trade", {
 
+    currency: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    unit_amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    unit_price_usd: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
 
+  }); // END TRADE MODEL
 
-
-  });
+  Trade.associate = function (models) {
+    Trade.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return Trade;
-};
+
+}; // END MODULE.EXPORTS

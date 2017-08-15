@@ -10,10 +10,10 @@ var BFX = require("bitfinex-api-node");
 var app = express();
 var http = require('http');
 var socketIO = require("socket.io");
+var Sequelize = require("sequelize");
+var db = require("./models");
 var server;
 var io;
-
-
 
 
 app.use(bodyParser.json());
@@ -24,12 +24,20 @@ app.use(express.static("views/assets/"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var port = process.env.PORT || 3000;
+
+var PORT = process.env.PORT || 3000;
+var SQLPORT = process.env.PORT || 8080;
 
 server = http.Server(app);
-server.listen(port);
-
+server.listen(PORT);
 io = socketIO(server);
+
+
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(SQLPORT, function() {
+    console.log("App listening on PORT " + SQLPORT);
+  });
+});
 
 require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io);
 require("./controller/htmlRoutes.js")(app, path, bodyParser);

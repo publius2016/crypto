@@ -25,9 +25,11 @@
     "express-ws": "^3.0.0",
     "helmet": "^3.8.1",
     "mysql": "^2.14.1",
+    "mysql2": "^1.4.0",
     "node.bittrex.api": "^0.4.3",
     "path": "^0.12.7",
     "request": "^2.81.0",
+    "sequelize": "^4.5.0",
     "socket.io": "^2.0.3"
   }
 }
