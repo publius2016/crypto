@@ -140,6 +140,7 @@ chartGet("xmr");
 /******************************************************************
 REGISTRATION & LOGIN API ROUTES
 ******************************************************************/
+var login = false;
 
 app.post("/registration", (req, res) => {
   db.User.create({
@@ -156,16 +157,23 @@ app.post("/registration", (req, res) => {
 app.post("/loginGate", (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  var login = false;
+
   db.User.findAll({}).then(function(data) {
     for (var i = 0; i < data.length; i++) {
       if(email == data[i].dataValues.email && password == data[i].dataValues.password) {
         login = true;
-      }
-    }
+        var userData = {
+          login: true,
+          email: data[i].dataValues.email,
+          name: data[i].dataValues.first_name,
+          id: data[i].dataValues.id
+        }
+
+      } // END IF ON USER AUTHENTICATION
+    } // END FOR ON DATABASE RETURN
 
     if (login == true) {
-      res.render("profile");
+      res.render("profile", { user: userData });
     } else {
       res.redirect("/login");
     }

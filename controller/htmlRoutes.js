@@ -10,6 +10,10 @@ module.exports = function (app, path, bodyParser) {
 
   app.get("/login", (req, res) => {
     res.render("login");
-  })
+  });
+
+  app.get("/newTrade", (req, res) => {
+    res.render("trades");
+  });
 
 }; // END MODULE.EXPORTS
