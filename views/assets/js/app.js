@@ -5,12 +5,12 @@ socket.on('btc', function (data) {
 
   $("#btc span").empty();
 
-  $("#btc_last_price").append(data.message.LAST_PRICE);
-  $("#btc_low").append(data.message.LOW);
-  $("#btc_high").append(data.message.HIGH);
-  $("#btc_vol").append(data.message.VOLUME);
-  $("#btc_chg").append(data.message.DAILY_CHANGE);
-  $("#btc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#btc .last_price").append(data.message.LAST_PRICE);
+  $("#btc .low").append(data.message.LOW);
+  $("#btc .high").append(data.message.HIGH);
+  $("#btc .vol").append(data.message.VOLUME);
+  $("#btc .chg").append(data.message.DAILY_CHANGE);
+  $("#btc .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('ltc', function (data) {
@@ -18,12 +18,12 @@ socket.on('ltc', function (data) {
 
   $("#ltc span").empty();
 
-  $("#ltc_last_price").append(data.message.LAST_PRICE);
-  $("#ltc_low").append(data.message.LOW);
-  $("#ltc_high").append(data.message.HIGH);
-  $("#ltc_vol").append(data.message.VOLUME);
-  $("#ltc_chg").append(data.message.DAILY_CHANGE);
-  $("#ltc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#ltc .last_price").append(data.message.LAST_PRICE);
+  $("#ltc .low").append(data.message.LOW);
+  $("#ltc .high").append(data.message.HIGH);
+  $("#ltc .vol").append(data.message.VOLUME);
+  $("#ltc .chg").append(data.message.DAILY_CHANGE);
+  $("#ltc .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('eth', function (data) {
@@ -31,12 +31,12 @@ socket.on('eth', function (data) {
 
   $("#eth span").empty();
 
-  $("#eth_last_price").append(data.message.LAST_PRICE);
-  $("#eth_low").append(data.message.LOW);
-  $("#eth_high").append(data.message.HIGH);
-  $("#eth_vol").append(data.message.VOLUME);
-  $("#eth_chg").append(data.message.DAILY_CHANGE);
-  $("#eth_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#eth .last_price").append(data.message.LAST_PRICE);
+  $("#eth .low").append(data.message.LOW);
+  $("#eth .high").append(data.message.HIGH);
+  $("#eth .vol").append(data.message.VOLUME);
+  $("#eth .chg").append(data.message.DAILY_CHANGE);
+  $("#eth .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('iot', function (data) {
@@ -44,12 +44,12 @@ socket.on('iot', function (data) {
 
   $("#iot span").empty();
 
-  $("#iot_last_price").append(data.message.LAST_PRICE);
-  $("#iot_low").append(data.message.LOW);
-  $("#iot_high").append(data.message.HIGH);
-  $("#iot_vol").append(data.message.VOLUME);
-  $("#iot_chg").append(data.message.DAILY_CHANGE);
-  $("#iot_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#iot .last_price").append(data.message.LAST_PRICE);
+  $("#iot .low").append(data.message.LOW);
+  $("#iot .high").append(data.message.HIGH);
+  $("#iot .vol").append(data.message.VOLUME);
+  $("#iot .chg").append(data.message.DAILY_CHANGE);
+  $("#iot .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('etc', function (data) {
@@ -57,12 +57,12 @@ socket.on('etc', function (data) {
 
   $("#etc span").empty();
 
-  $("#etc_last_price").append(data.message.LAST_PRICE);
-  $("#etc_low").append(data.message.LOW);
-  $("#etc_high").append(data.message.HIGH);
-  $("#etc_vol").append(data.message.VOLUME);
-  $("#etc_chg").append(data.message.DAILY_CHANGE);
-  $("#etc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#etc .last_price").append(data.message.LAST_PRICE);
+  $("#etc .low").append(data.message.LOW);
+  $("#etc .high").append(data.message.HIGH);
+  $("#etc .vol").append(data.message.VOLUME);
+  $("#etc .chg").append(data.message.DAILY_CHANGE);
+  $("#etc .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('dsh', function (data) {
@@ -70,12 +70,12 @@ socket.on('dsh', function (data) {
 
   $("#dsh span").empty();
 
-  $("#dsh_last_price").append(data.message.LAST_PRICE);
-  $("#dsh_low").append(data.message.LOW);
-  $("#dsh_high").append(data.message.HIGH);
-  $("#dsh_vol").append(data.message.VOLUME);
-  $("#dsh_chg").append(data.message.DAILY_CHANGE);
-  $("#dsh_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#dsh .last_price").append(data.message.LAST_PRICE);
+  $("#dsh .low").append(data.message.LOW);
+  $("#dsh .high").append(data.message.HIGH);
+  $("#dsh .vol").append(data.message.VOLUME);
+  $("#dsh .chg").append(data.message.DAILY_CHANGE);
+  $("#dsh .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('xrp', function (data) {
@@ -83,12 +83,12 @@ socket.on('xrp', function (data) {
 
   $("#xrp span").empty();
 
-  $("#xrp_last_price").append(data.message.LAST_PRICE);
-  $("#xrp_low").append(data.message.LOW);
-  $("#xrp_high").append(data.message.HIGH);
-  $("#xrp_vol").append(data.message.VOLUME);
-  $("#xrp_chg").append(data.message.DAILY_CHANGE);
-  $("#xrp_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#xrp .last_price").append(data.message.LAST_PRICE);
+  $("#xrp .low").append(data.message.LOW);
+  $("#xrp .high").append(data.message.HIGH);
+  $("#xrp .vol").append(data.message.VOLUME);
+  $("#xrp .chg").append(data.message.DAILY_CHANGE);
+  $("#xrp .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('bcc', function (data) {
@@ -96,12 +96,12 @@ socket.on('bcc', function (data) {
 
   $("#bcc span").empty();
 
-  $("#bcc_last_price").append(data.message.LAST_PRICE);
-  $("#bcc_low").append(data.message.LOW);
-  $("#bcc_high").append(data.message.HIGH);
-  $("#bcc_vol").append(data.message.VOLUME);
-  $("#bcc_chg").append(data.message.DAILY_CHANGE);
-  $("#bcc_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#bcc .last_price").append(data.message.LAST_PRICE);
+  $("#bcc .low").append(data.message.LOW);
+  $("#bcc .high").append(data.message.HIGH);
+  $("#bcc .vol").append(data.message.VOLUME);
+  $("#bcc .chg").append(data.message.DAILY_CHANGE);
+  $("#bcc .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 socket.on('xmr', function (data) {
@@ -109,12 +109,12 @@ socket.on('xmr', function (data) {
 
   $("#xmr span").empty();
 
-  $("#xmr_last_price").append(data.message.LAST_PRICE);
-  $("#xmr_low").append(data.message.LOW);
-  $("#xmr_high").append(data.message.HIGH);
-  $("#xmr_vol").append(data.message.VOLUME);
-  $("#xmr_chg").append(data.message.DAILY_CHANGE);
-  $("#xmr_percChg").append(data.message.DAILY_CHANGE_PERC);
+  $("#xmr .last_price").append(data.message.LAST_PRICE);
+  $("#xmr .low").append(data.message.LOW);
+  $("#xmr .high").append(data.message.HIGH);
+  $("#xmr .vol").append(data.message.VOLUME);
+  $("#xmr .chg").append(data.message.DAILY_CHANGE);
+  $("#xmr .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
 var btcTime = [];
