@@ -1,5 +1,10 @@
 module.exports = function (app, path, bodyParser, request, BFX, io) {
 
+
+/******************************************************************
+BITFINEX TICKER WEB SOCKET
+******************************************************************/
+
   const API_KEY = "PfH9p2vX4oUReR0gBC1gbj3deYhWcaKkot2zNELE6NT";
   const API_SECRET = "ClSGqdAPsDdG0JotzYiSi1GagHuGFSKwpX11W0GeJmN";
 
@@ -78,30 +83,6 @@ module.exports = function (app, path, bodyParser, request, BFX, io) {
 
   });
 
-  app.get("/", (req, res) => {
-    res.render("index");
-  });
-
-  app.get("/btc", (req, res) => {
-    var btcURL = "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
-    request(btcURL, (err, response, body) => {
-      var btcHisto = JSON.parse(body);
-      // console.log(btcHisto);
-      res.send(btcHisto);
-
-    });
-  });
-
-  app.get("/ltc", (req, res) => {
-    var btcURL = "https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
-    request(btcURL, (err, response, body) => {
-      var ltcHisto = JSON.parse(body);
-      // console.log(btcHisto);
-      res.send(ltcHisto);
-
-    });
-  });
-
   io.on('connection', function (socket) {
     socket.emit('btc', { message: btc[0]});
     socket.emit('ltc', { message: ltc[0]});
@@ -126,20 +107,34 @@ module.exports = function (app, path, bodyParser, request, BFX, io) {
 
   });
 
-  // app.get("/", (req, res) => {
-  //   var options =
-  //     {
-  //       method: "GET",
-  //       url: "https://api.bitfinex.com/v1/pubticker/btcusd"
-  //     };
-  //
-  //   request(options, (error, response, body) => {
-  //     if (error) throw new Error(error);
-  //     var body = JSON.parse(body);
-  //     console.log(body);
-  //     res.render("index", { ticker: body });
-  //   }); // END REQUEST
-  //
-  // }); // END APP.GET FOR HOMEPAGE
+/******************************************************************
+CHART API ROUTES
+******************************************************************/
+
+function chartGet(currency) {
+  var route = "/" + currency;
+  var currencyUpper = currency.toUpperCase();
+  app.get(route, (req, res) => {
+    var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
+    request(url, (err, response, body) => {
+      var chartData = JSON.parse(body);
+      res.send(chartData);
+
+    });
+  });
+}; // END CHART FUNCTION
+
+chartGet("btc");
+chartGet("ltc");
+chartGet("eth");
+chartGet("iot");
+chartGet("etc");
+chartGet("dsh");
+chartGet("xrp");
+chartGet("bcc");
+chartGet("xmr");
+
+
+
 
 }; // END MODULE.EXPORTS

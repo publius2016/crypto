@@ -1,3 +1,7 @@
+/******************************************************************
+BITFINEX TICKER WEB SOCKET DISPLAY
+******************************************************************/
+
 var socket = io.connect('/');
 
 socket.on('btc', function (data) {
@@ -117,54 +121,48 @@ socket.on('xmr', function (data) {
   $("#xmr .percChg").append(data.message.DAILY_CHANGE_PERC);
 });
 
-var btcTime = [];
-var btcClose = [];
-var ltcTime = [];
-var ltcClose = [];
 
+/******************************************************************
+CHART API ROUTES
+******************************************************************/
 
-  $.get("/btc", (data) => {
+function chart (currency) {
+  var route = "/" + currency;
+  $.get(route, (data) => {
+
+    var time = [];
+    var close = [];
 
     for (var i = 0; i < data.Data.length; i++) {
-      btcTime.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
-      btcClose.push(data.Data[i].close);
+      time.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
+      close.push(data.Data[i].close);
     }
 
-    var ctx = document.getElementById('btcChart').getContext('2d');
+    var chartHolder = currency + "Chart";
+    var chartLabel = currency.toUpperCase() + "/USD Closing Price";
+    var ctx = document.getElementById(chartHolder).getContext('2d');
     var chart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: btcTime,
+          labels: time,
           datasets: [{
-              label: "BTC/USD Closing Price",
+              label: chartLabel,
               backgroundColor: 'rgb(255, 99, 132)',
               borderColor: 'rgb(255, 99, 132)',
-              data: btcClose,
+              data: close,
           }]
       },
       options: {}
     });
   });
+}; // END CHART FUNCTION
 
-  $.get("/ltc", (data) => {
-
-    for (var i = 0; i < data.Data.length; i++) {
-      ltcTime.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
-      ltcClose.push(data.Data[i].close);
-    }
-
-    var ctx = document.getElementById('ltcChart').getContext('2d');
-    var chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: ltcTime,
-          datasets: [{
-              label: "LTC/USD Closing Price",
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
-              data: ltcClose,
-          }]
-      },
-      options: {}
-    });
-  });
+chart("btc");
+chart("ltc");
+chart("eth");
+chart("iot");
+chart("etc");
+chart("dsh");
+chart("xrp");
+chart("bcc");
+chart("xmr");
