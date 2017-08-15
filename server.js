@@ -33,7 +33,7 @@ server.listen(PORT);
 io = socketIO(server);
 
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(SQLPORT, function() {
     console.log("App listening on PORT " + SQLPORT);
   });

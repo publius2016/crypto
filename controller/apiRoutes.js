@@ -1,3 +1,5 @@
+var db = require("../models");
+
 module.exports = function (app, path, bodyParser, request, BFX, io) {
 
 
@@ -134,6 +136,42 @@ chartGet("xrp");
 chartGet("bcc");
 chartGet("xmr");
 
+
+/******************************************************************
+REGISTRATION & LOGIN API ROUTES
+******************************************************************/
+
+app.post("/registration", (req, res) => {
+  db.User.create({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password
+  }).then(function(dbBurger) {
+    res.redirect("/");
+
+  }); // END DB.USER.CREATE
+}); // END APP.POST FOR REGISTRATION
+
+app.post("/loginGate", (req, res) => {
+  var email = req.body.email;
+  var password = req.body.password;
+  var login = false;
+  db.User.findAll({}).then(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      if(email == data[i].dataValues.email && password == data[i].dataValues.password) {
+        login = true;
+      }
+    }
+
+    if (login == true) {
+      res.render("profile");
+    } else {
+      res.redirect("/login");
+    }
+
+  }); // END DB.USER.FINDALL
+}); // END APP.POST FOR LOGINGATE
 
 
 
