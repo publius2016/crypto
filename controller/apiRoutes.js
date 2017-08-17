@@ -176,7 +176,11 @@ app.post("/loginGate", (req, res) => {
 
     if (login == true) {
 
-      db.Trade.findAll({}).then(function(data) {
+      db.Trade.findAll({
+        where: {
+          UserId: userData.id
+        }
+      }).then(function(data) {
         userData.trades = data;
         console.log(userData);
         console.log(typeof userData);
