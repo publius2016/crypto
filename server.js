@@ -39,5 +39,5 @@ db.sequelize.sync({ force: false }).then(function() {
   });
 });
 
-require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io);
+require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs);
 require("./controller/htmlRoutes.js")(app, path, bodyParser);

@@ -1,3 +1,30 @@
 <h1>Login Successful</h1>
-<h2>Welcome, {{ user.name }}</h2>
+<h2>Welcome, {{user.name}}</h2>
 <a href="/newTrade">New Trade</a>
+
+
+<table id="tradeHolder">
+  <thead>
+    <th>Currency</th>
+    <th>Units</th>
+    <th>Date Purchased</th>
+    <th>Purchase Price (USD)</th>
+    <th>Closing Value</th>
+    <th>Daily chg $</th>
+    <th>Daily chg %</th>
+  </thead>
+  <tbody>
+  {{#each user.trades}}
+    <tr>
+      <td>{{this.currency}}</td>
+      <td>{{this.unit_amount}}</td>
+      <td>{{this.createdAt}}</td>
+      <td>{{this.unit_price_usd}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+  {{/each}}
+  <tbody>
+</table>

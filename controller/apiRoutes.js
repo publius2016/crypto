@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function (app, path, bodyParser, request, BFX, io) {
+module.exports = function (app, path, bodyParser, request, BFX, io, fs) {
 
 
 /******************************************************************
@@ -141,6 +141,7 @@ chartGet("xmr");
 REGISTRATION & LOGIN API ROUTES
 ******************************************************************/
 var login = false;
+var userData = {};
 
 app.post("/registration", (req, res) => {
   db.User.create({
@@ -160,9 +161,10 @@ app.post("/loginGate", (req, res) => {
 
   db.User.findAll({}).then(function(data) {
     for (var i = 0; i < data.length; i++) {
+
       if(email == data[i].dataValues.email && password == data[i].dataValues.password) {
         login = true;
-        var userData = {
+        userData = {
           login: true,
           email: data[i].dataValues.email,
           name: data[i].dataValues.first_name,
@@ -173,16 +175,43 @@ app.post("/loginGate", (req, res) => {
     } // END FOR ON DATABASE RETURN
 
     if (login == true) {
-      // app.get("/profile/:id", (req, res) => {
-      //
-      // });
-      res.render("profile", { user: userData });
+
+      db.Trade.findAll({}).then(function(data) {
+        userData.trades = data;
+        console.log(userData);
+        console.log(typeof userData);
+        // userData = JSON.stringify(userData);
+        fs.writeFile('object.txt', userData, (err) => {
+          if (err) throw ERROR;
+          console.log("object saved");
+        });
+
+        res.render("profile", { user: userData });
+
+      }); // END DB.TRADE.FINDALL
+
     } else {
       res.redirect("/login");
     }
 
   }); // END DB.USER.FINDALL
 }); // END APP.POST FOR LOGINGATE
+
+
+/******************************************************************
+TRADE API ROUTES
+******************************************************************/
+
+// app.post("/newTrade", (req, res) => {
+//   db.Trade.create({
+//     currency: req.body.currency,
+//     unit_amount: req.body.units,
+//     unit_price_usd: req.body.unit_purchase_price,
+//     userId:
+//   }).then(function () {
+//     res.redirect("/profile");
+//   });
+// }); // END APP.POST FOR NEWTRADE
 
 
 
