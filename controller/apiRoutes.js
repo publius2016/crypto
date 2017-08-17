@@ -173,6 +173,9 @@ app.post("/loginGate", (req, res) => {
     } // END FOR ON DATABASE RETURN
 
     if (login == true) {
+      // app.get("/profile/:id", (req, res) => {
+      //
+      // });
       res.render("profile", { user: userData });
     } else {
       res.redirect("/login");
