@@ -142,6 +142,8 @@ REGISTRATION & LOGIN API ROUTES
 ******************************************************************/
 var login = false;
 var userData = {};
+var email;
+var password;
 
 app.post("/registration", (req, res) => {
   db.User.create({
@@ -150,14 +152,14 @@ app.post("/registration", (req, res) => {
     email: req.body.email,
     password: req.body.password
   }).then(function(dbBurger) {
-    res.redirect("/");
+    res.redirect("/login");
 
   }); // END DB.USER.CREATE
 }); // END APP.POST FOR REGISTRATION
 
 app.post("/loginGate", (req, res) => {
-  var email = req.body.email;
-  var password = req.body.password;
+  email = req.body.email;
+  password = req.body.password;
 
   db.User.findAll({}).then(function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -174,11 +176,13 @@ app.post("/loginGate", (req, res) => {
       } // END IF ON USER AUTHENTICATION
     } // END FOR ON DATABASE RETURN
 
+  function getTrades(id) {
+
     if (login == true) {
 
       db.Trade.findAll({
         where: {
-          UserId: userData.id
+          UserId: id
         }
       }).then(function(data) {
         userData.trades = data;
@@ -197,6 +201,11 @@ app.post("/loginGate", (req, res) => {
     } else {
       res.redirect("/login");
     }
+  }; // END GETTRADES FUNCTION
+  getTrades(userData.id);
+
+
+
 
   }); // END DB.USER.FINDALL
 }); // END APP.POST FOR LOGINGATE
@@ -206,16 +215,60 @@ app.post("/loginGate", (req, res) => {
 TRADE API ROUTES
 ******************************************************************/
 
-// app.post("/newTrade", (req, res) => {
-//   db.Trade.create({
-//     currency: req.body.currency,
-//     unit_amount: req.body.units,
-//     unit_price_usd: req.body.unit_purchase_price,
-//     userId:
-//   }).then(function () {
-//     res.redirect("/profile");
-//   });
-// }); // END APP.POST FOR NEWTRADE
+app.get("/profile", (req, res) => {
+  if (login == true) {
+
+    db.Trade.findAll({
+      where: {
+        UserId: userData.id
+      }
+    }).then(function(data) {
+      userData.trades = data;
+      res.render("profile", { user: userData });
+    }); // END DB.TRADE.FINDALL
+
+  } else {
+    res.redirect("/login");
+  }
+}); // END APP.GET FOR PROFILE PAGE
+
+
+app.post("/newTrade", (req, res) => {
+  db.Trade.create({
+    currency: req.body.currency,
+    unit_amount: req.body.units,
+    unit_price_usd: req.body.unit_purchase_price,
+    UserId: userData.id
+  }).then(function () {
+    res.redirect("/profile");
+  });
+}); // END APP.POST FOR NEWTRADE
+
+app.delete("/delete/:id", (req, res) => {
+  db.Trade.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function() {
+
+    res.json({status: "Success", redirect: "/profile"});
+  });
+}); // END APP.POST FOR DELETING TRADE
+
+app.put("/update/:id", (req, res) => {
+  console.log("Update Req:" + JSON.stringify(req.body));
+  db.Trade.update({
+    unit_amount: req.body.units,
+    unit_price_usd: req.body.price
+  },
+    {
+      where: {
+        id: req.body.id
+      }
+    }).then(function () {
+      res.json({status: "Success", redirect: "/profile"});
+    });
+}); // END APP.PUT FOR UPDATING TRADE
 
 
 

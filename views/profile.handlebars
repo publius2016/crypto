@@ -1,7 +1,5 @@
 <h1>Login Successful</h1>
 <h2>Welcome, {{user.name}}</h2>
-<a href="/newTrade">New Trade</a>
-
 
 <table id="tradeHolder">
   <thead>
@@ -17,14 +15,75 @@
   {{#each user.trades}}
     <tr>
       <td>{{this.currency}}</td>
-      <td>{{this.unit_amount}}</td>
+      <td><input class="editable" name="units" id="units{{this.id}}" placeholder="{{this.unit_amount}}"></td>
       <td>{{this.createdAt}}</td>
-      <td>{{this.unit_price_usd}}</td>
+      <td><input class="editable" name="price" id="price{{this.id}}" placeholder="{{this.unit_price_usd}}"></td>
       <td></td>
       <td></td>
       <td></td>
-
+      <td><button class="update" data-id="{{this.id}}">Update</button></td>
+      <td><button class="delete" data-id="{{this.id}}">Delete</button></td>
     </tr>
   {{/each}}
   <tbody>
 </table>
+
+<h1>Create a New Trade</h1>
+<form id="trades" method="POST" action="/newTrade">
+  <select id="currency" name="currency">
+    <option value="btc">BTC</option>
+    <option value="ltc">LTC</option>
+    <option value="eth">ETH</option>
+    <option value="iot">IOT</option>
+    <option value="etc">ETC</option>
+    <option value="dsh">DSH</option>
+    <option value="xrp">XRP</option>
+    <option value="bcc">BCC</option>
+    <option value="xmr">XMR</option>
+  </select>
+  <input id="units" name="units" placeholder="Units">
+  <input id="unit_purchase_price" name="unit_purchase_price" placeholder="Unit Purchase Price">
+  <button type="submit">Submit</button>
+
+
+</form>
+
+<script>
+  $(function () {
+    $(".delete").on("click", function (e) {
+
+      var id = $(this).attr("data-id");
+      $.ajax({
+        method: "DELETE",
+        url: "/delete/" + id
+      }).done(function (result) {
+        if (result.status === "Success") {
+          window.location = result.redirect;
+        }
+      }); // END AJAX DONE
+    }); // END CLICK ON DELETE
+
+    $(".update").on("click", function (e) {
+      var edited = {};
+      var id = $(this).attr("data-id");
+      edited.units = $("#units" + id).val().trim();
+      edited.price = $("#price" + id).val().trim();
+      edited.id = id;
+      console.log("Edited Units: " + edited.units);
+      console.log("Edited Price: " + edited.price);
+      // $("#tradeHolder input").prop('disabled', false);
+      $.ajax({
+        method: "PUT",
+        url: "/update/" + id,
+        data: edited
+      }).done(function (result) {
+        if (result.status === "Success") {
+          window.location = result.redirect;
+        }
+      }); // END AJAX DONE
+    }); // END CLICK ON UPDATE
+
+
+  }); // END READY
+
+</script>
