@@ -138,6 +138,25 @@ chartGet("xmr");
 
 
 /******************************************************************
+CURRENCY API ROUTES
+******************************************************************/
+var currencyType = {};
+app.get("/currency/:type", (req, res) => {
+  console
+  currencyType = {
+    currency: req.params.type
+  }
+
+  res.render("currency");
+
+}); // END APP.GET FOR CURRENCY
+console.log(currencyType);
+app.get("/currencyProfile", (req, res) => {
+  res.json(currencyType);
+}); // END APP.GET FOR CURRENCY PROFILE
+
+
+/******************************************************************
 REGISTRATION & LOGIN API ROUTES
 ******************************************************************/
 var login = false;

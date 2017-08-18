@@ -18,6 +18,7 @@ function tickerDisplay(currency) {
     $(currencyID + " .chg").append(data.message.DAILY_CHANGE);
     $(currencyID + " .percChg").append(data.message.DAILY_CHANGE_PERC * 100);
 
+
   });
 }; // END TICKERDISPLAY FUNCTION
 
@@ -76,5 +77,7 @@ chart("dsh");
 chart("xrp");
 chart("bcc");
 chart("xmr");
+
+
 
 }); // END READY

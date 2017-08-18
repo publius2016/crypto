@@ -16,4 +16,8 @@ module.exports = function (app, path, bodyParser) {
     res.render("trades");
   });
 
+  app.get("/currency", (req, res) => {
+    res.render("currency");
+  });
+
 }; // END MODULE.EXPORTS
