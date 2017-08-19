@@ -7,13 +7,15 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
 
 
     <script
   src="http://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous" async></script>
+  crossorigin="anonymous" defer></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" async></script>
     <script src="/socket.io/socket.io.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js" async></script>
@@ -21,7 +23,38 @@
 </head>
 
 <body>
+  <div id="bodyHolder">
+    <div id="nav">
+      <div class="backImgHolder">
+        <a data-toggle="modal" data-target="#myModal" class="menu"><img src="../images/menu-toggler.png" alt="menu-icon" id="menu-icon"></a>
+        <h1 id="title">MOOLAH</h1>
+        <a class="add"><img src="../images/add.png" alt="add-icon" id="add-icon"></a>
+        <a class="chart"><img src="../images/chart-icon.png" alt="chart-icon" id="chart-icon"></a>
+      </div>
+    </div>
+ <div id="myModal" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+
+   <!-- Modal content-->
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Modal Header</h4>
+     </div>
+     <div class="modal-body">
+       <a href="/">Home</a>
+       <a href="/profile">Profile</a>
+       <a href="/login">Login</a>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+
+ </div>
+</div>
   {{{ body }}}
-<body>
+  </div>
+</body>
 
 </html>

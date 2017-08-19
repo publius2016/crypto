@@ -1,3 +1,115 @@
-#btc {
-  border: 1px solid #000;
+body {
+    font-family: 'Montserrat', sans-serif;
 }
+
+#bodyHolder {}
+
+#menu-icon {
+    width: 60px;
+    height: 60px;
+    margin-top: 63px;
+    margin-right: 40px;
+}
+
+#add-icon {
+    width: 60px;
+    height: 60px;
+    margin-top: -65px;
+    margin-left: 40px;
+}
+
+#chart-icon {
+    width: 60px;
+    height: 60px;
+    margin-top: 90px;
+    margin-right: 5%;
+    float: right;
+}
+
+#nav {
+    background-image: url("../images/bitcoin-background-with-bar.jpg");
+    background-position: top left;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-bottom: 50px;
+    border-bottom: 4px solid #CCCACC;
+    background-color: #4AA956;
+    opacity: .8;
+    position: relative;
+    height: 234px;
+}
+
+.backImgHolder {
+    border-bottom: 60px solid rgba(49, 170, 57, .67);
+    height: 230px;
+}
+
+#nav h1 {
+    width: 40%;
+    margin: 0 auto;
+    color: #FFF;
+    padding-top: 70px;
+    text-align: center;
+}
+
+#nav #title {
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+#button {
+    background-color: none;
+}
+
+.plus {
+    float: left;
+}
+
+.menu {
+    float: right;
+}
+
+#currencyHolder {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/*//////////CURRENCY///////////*/
+
+#currencyHolder {}
+
+.currencyData p {
+    float: left;
+}
+
+
+
+
+
+
+@media screen and (max-width: 480px) {
+    .currencyData p:not(.min){
+    	display: none;
+    }
+
+
+
+   /* .currencyData span.low
+    {
+        display: none;
+    }
+    .currencyData span.high
+    {
+        display: none;
+    }
+    .currencyData span.vol
+    {
+        display: none;
+    }
+    .currencyData span.chg{
+        display: none;
+    }
+    }*/
+}
+
+

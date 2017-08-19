@@ -78,6 +78,8 @@ chart("xrp");
 chart("bcc");
 chart("xmr");
 
-
+$('#myModal').on('shown.bs.modal', function () {
+ $('#myInput').focus();
+});
 
 }); // END READY
