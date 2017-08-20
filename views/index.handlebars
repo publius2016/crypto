@@ -3,102 +3,147 @@
 
 <div id="currencyHolder">
   <div class="currencyData" id="btc">
-    <h1>Bitcoin</h1>
-    <h2><a href="/currency/btc">BTC/USD</a></h2>
-    <p class="min">Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p class="min">Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="btcChart"></canvas>
+    <div class="currencyTitle">
+      <img src="../images/bitcoin-icon.jpg" alt="Bitcoin" class="currencyIcon">
+      <h2>Bitcoin</h2>
+      <p><a href="/currency/btc">BTC/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <span class="low"></span>
+      <span class="high"></span>
+      <span class="vol"></span>
+      <span class="chg"></span>
+      <span class="percChg"></span>
+    </div>
+
   </div>
 
-  <div id="ltc">
-    <h1><a href="/currency/ltc">LTC/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="ltcChart"></canvas>
+  <div class="currencyData" id="ltc">
+    <div class="currencyTitle">
+      <img src="../images/litecoin-icon.jpg" alt="Litecoin" class="currencyIcon">
+      <h2>Litecoin</h2>
+      <p><a href="/currency/ltc">LTC/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="eth">
-    <h1><a href="/currency/eth">ETH/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="ethChart"></canvas>
+  <div class="currencyData" id="eth">
+    <div class="currencyTitle">
+      <img src="../images/ethereum-icon.jpg" alt="Ethereum" class="currencyIcon">
+      <h2>Ethereum</h2>
+      <p><a href="/currency/eth">ETH/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="iot">
-    <h1><a href="/currency/iot">IOT/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="iotChart"></canvas>
+  <div class="currencyData" id="iot">
+    <div class="currencyTitle">
+      <img src="../images/iota-icon.jpg" alt="Iota" class="currencyIcon">
+      <h2>IOTA</h2>
+      <p><a href="/currency/iot">IOT/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="etc">
-    <h1><a href="/currency/etc">ETC/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="etcChart"></canvas>
+  <div class="currencyData" id="etc">
+    <div class="currencyTitle">
+      <img src="../images/ethereum-classic-icon.jpg" alt="Ethereum Classic" class="currencyIcon">
+      <h2>Ethereum Classic</h2>
+      <p><a href="/currency/etc">ETC/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="dsh">
-    <h1><a href="/currency/dsh">DSH/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="dshChart"></canvas>
+  <div class="currencyData" id="dsh">
+    <div class="currencyTitle">
+      <img src="../images/dash-icon.jpg" alt="Dash" class="currencyIcon">
+      <h2>Dash</h2>
+      <p><a href="/currency/dsh">DSH/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="xrp">
-    <h1><a href="/currency/xrp">XRP/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="xrpChart"></canvas>
+  <div class="currencyData" id="xrp">
+    <div class="currencyTitle">
+      <img src="../images/ripple-icon.jpg" alt="Ripple" class="currencyIcon">
+      <h2>Ripple</h2>
+      <p><a href="/currency/xrp">XRP/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="bcc">
-    <h1><a href="/currency/bcc">BCC/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="bccChart"></canvas>
+  <div class="currencyData" id="bcc">
+    <div class="currencyTitle">
+      <img src="../images/bitcoin-cash-icon.jpg" alt="Bitcoin Cash" class="currencyIcon">
+      <h2>Bitcoin Cash</h2>
+      <p><a href="/currency/bcc">BCC/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 
-  <div id="xmr">
-    <h1><a href="/currency/xmr">XMR/USD</a></h1>
-    <p>Last Price: $<span class="last_price"></span></p>
-    <p>24HR Low: $<span class="low"></span></p>
-    <p>24HR High: $<span class="high"></span></p>
-    <p>24HR Volume: <span class="vol"></span></p>
-    <p>Daily Chg: $<span class="chg"></span></p>
-    <p>Daily Chg %: <span class="percChg"></span>%</p>
-    <canvas id="xmrChart"></canvas>
+  <div class="currencyData" id="xmr">
+    <div class="currencyTitle">
+      <img src="../images/monero-icon.jpg" alt="Monero" class="currencyIcon">
+      <h2>Monero</h2>
+      <p><a href="/currency/xmr">XMR/USD</a></p>
+      <span class="last_price"></span>
+    </div>
+    <div class="dataHolder">
+      <p class="minHide">24HR Low: $</p><span class="low"></span>
+      <p class="minHide">24HR High: $</p><span class="high"></span>
+      <p class="minHide">24HR Volume: </p><span class="vol"></span>
+      <p class="minHide">Daily Chg: $</p><span class="chg"></span>
+      <p class="minHide">Daily Chg %: </p><span class="percChg"></span>
+    </div>
   </div>
 </div>

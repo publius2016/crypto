@@ -19,40 +19,237 @@
     <script src="/socket.io/socket.io.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js" async></script>
-    
+
 </head>
 
 <body>
   <div id="bodyHolder">
     <div id="nav">
       <div class="backImgHolder">
-        <a data-toggle="modal" data-target="#myModal" class="menu"><img src="../images/menu-toggler.png" alt="menu-icon" id="menu-icon"></a>
+        <a data-toggle="modal" data-target="#menuModal" class="menu"><img src="../images/menu-toggler.png" alt="menu-icon" id="menu-icon"></a>
         <h1 id="title">MOOLAH</h1>
-        <a class="add"><img src="../images/add.png" alt="add-icon" id="add-icon"></a>
-        <a class="chart"><img src="../images/chart-icon.png" alt="chart-icon" id="chart-icon"></a>
+        <a data-toggle="modal" data-target="#chartModal" class="chart"><img src="../images/chart-icon.png" alt="chart-icon" id="chart-icon"></a>
       </div>
     </div>
- <div id="myModal" class="modal fade" role="dialog">
- <div class="modal-dialog">
 
-   <!-- Modal content-->
-   <div class="modal-content">
-     <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">&times;</button>
-       <h4 class="modal-title">Modal Header</h4>
-     </div>
-     <div class="modal-body">
-       <a href="/">Home</a>
-       <a href="/profile">Profile</a>
-       <a href="/login">Login</a>
-     </div>
-     <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ <div id="menuModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <a href="/">Home</a>
+         <a href="/profile">Profile</a>
+         <a href="/login">Login</a>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
      </div>
    </div>
-
  </div>
-</div>
+
+
+ <div id="chartModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <a data-toggle="modal" data-target="#btcModal">BTC</a>
+         <a data-toggle="modal" data-target="#ltcModal">LTC</a>
+         <a data-toggle="modal" data-target="#ethModal">ETH</a>
+         <a data-toggle="modal" data-target="#iotModal">IOT</a>
+         <a data-toggle="modal" data-target="#etcModal">ETC</a>
+         <a data-toggle="modal" data-target="#dshModal">DSH</a>
+         <a data-toggle="modal" data-target="#xrpModal">XRP</a>
+         <a data-toggle="modal" data-target="#bccModal">BCC</a>
+         <a data-toggle="modal" data-target="#xmrModal">XMR</a>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="btcModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="btcChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="ltcModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="ltcChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="ethModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="ethChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="iotModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="iotChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="etcModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="etcChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="dshModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="dshChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="xrpModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="xrpChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="bccModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="bccChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div id="xmrModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+         <canvas id="xmrChart"></canvas>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
   {{{ body }}}
   </div>
 </body>
