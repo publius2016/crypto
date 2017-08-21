@@ -2,11 +2,31 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.background{
+label {
+  color: #FFF;
+  font-weight: lighter;
+  font-size: 12px;
+}
+
+.background {
     background-image: url("../images/bitcoin-background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     background-position: top right;
-    background-repeat: no-repeat;
-    width: 100%;
+    /*background-repeat: no-repeat;
+    width: 100%;*/
+}
+
+.container-table {
+    height: 100%;
+    display: table;
+}
+
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .btn-danger {
@@ -15,25 +35,57 @@ body {
     border-color: #31aa39;
 }
 
+.btn-round {
+    border-radius: 30px;
+  }
+
+#title {
+    margin: 50 50 50 50px;
+    color: #FFF;
+    float: center;
+    letter-spacing: 4px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.card.card-register {
+    border-radius: 8px;
+    color: #fff;
+    max-width: 350px;
+    margin: 20px 0 70px;
+    min-height: 400px;
+    padding: 30px;
+}
+
+.register-form .form-control {
+    border: 1px solid transparent !important;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
 .card {
     width: 30rem;
-}
+    display: table;
+  }
 
 .forgot {
     text-align: center;
+    color: #FFF;
 }
 
 .page-background {
-  background-position: center center;
-  background-size: cover;
-  min-height: 100vh;
-  max-height: 999px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  z-index: 1;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    max-height: 999px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 1;
 }
-
 
 #bodyHolder {}
 
