@@ -2,6 +2,39 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.background{
+    background-image: url("../images/bitcoin-background.jpg");
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #31aa39;
+    border-color: #31aa39;
+}
+
+.card {
+    width: 30rem;
+}
+
+.forgot {
+    text-align: center;
+}
+
+.page-background {
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  max-height: 999px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+
 #bodyHolder {}
 
 #menu-icon {
@@ -22,7 +55,6 @@ body {
     width: 60px;
     height: 60px;
     margin-top: 200px;
-    margin-right: -10%;
     float: right;
 }
 
@@ -74,65 +106,67 @@ body {
 }
 
 #currencyHolder {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 .currencyData {
-  clear: both;
-  display: block;
-  margin: 20px 0 30px 10px;
-  padding-top: 30px;
-  padding-bottom: 50px;
-  border-top: 1px solid #d3d3d3;
+    clear: both;
+    display: block;
+    margin: 20px 0 30px 10px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    border-top: 1px solid #d3d3d3;
 }
 
 .currencyTitle {
-  float: left;
+    float: left;
 }
 
 .currencyTitle img {
-  width: 30px;
-  height: 30px;
-  float: left;
+    width: 30px;
+    height: 30px;
+    float: left;
 }
 
 .currencyTitle h2 {
-  font-size: 1.4em;
-  display: inline;
-  margin-left: 6px;
+    font-size: 1.4em;
+    display: inline;
+    margin-left: 6px;
 }
 
 .currencyTitle p {
-  font-size: .8em;
-  margin-left: 37px;
-  margin-bottom: 0;
+    font-size: .8em;
+    margin-left: 37px;
+    margin-bottom: 0;
 }
 
 .last_price {
-  margin-left: 37px;
-  margin-top: 0;
+    margin-left: 37px;
+    margin-top: 0;
 }
 
 .dataHolder {
-  float: right;
+    float: right;
 }
 
 .dataHolder span {
-  float: right;
-  margin-right: 20px;
-  font-size: 1.4em;
+    float: right;
+    margin-right: 20px;
+    font-size: 1.4em;
 }
 
 
 @media screen and (max-width: 480px) {
 
     h3 {
-      display: inline;
+        display: inline;
     }
 
-    .minHide, .low, .high, .vol, .chg {
-    	display: none;
+    .minHide,
+    .low,
+    .high,
+    .vol,
+    .chg {
+        display: none;
     }
-
-
 }
