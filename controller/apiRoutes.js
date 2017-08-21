@@ -224,8 +224,6 @@ app.post("/loginGate", (req, res) => {
   getTrades(userData.id);
 
 
-
-
   }); // END DB.USER.FINDALL
 }); // END APP.POST FOR LOGINGATE
 
@@ -250,6 +248,17 @@ app.get("/profile", (req, res) => {
     res.redirect("/login");
   }
 }); // END APP.GET FOR PROFILE PAGE
+
+app.get("/trades", (req, res) => {
+  db.Trade.findAll({
+    where: {
+      UserId: userData.id
+    }
+  }).then(function(data) {
+    userData.trades = data;
+    res.json(userData);
+  }); // END DB.TRADE.FINDALL
+}); // END APP.GET FOR TRADES OBJECT
 
 
 app.post("/newTrade", (req, res) => {

@@ -18,7 +18,6 @@ function tickerDisplay(currency) {
     $(currencyID + " .chg").append("Daily Chg: $" + data.message.DAILY_CHANGE.toFixed(2));
     $(currencyID + " .percChg").append((data.message.DAILY_CHANGE_PERC * 100).toFixed(2) + "%");
 
-
   });
 }; // END TICKERDISPLAY FUNCTION
 
