@@ -3,20 +3,19 @@ body {
 }
 
 label {
-  color: #FFF;
-  font-weight: lighter;
-  font-size: 12px;
+    color: #FFF;
+    font-weight: lighter;
+    font-size: 12px;
 }
 
-.background {
+.body-wrapper {
     background-image: url("../images/bitcoin-background.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-position: top right;
-    /*background-repeat: no-repeat;
-    width: 100%;*/
+    width: 100%;
 }
 
 .container-table {
@@ -29,15 +28,26 @@ label {
     vertical-align: middle;
 }
 
-.btn-danger {
+.btn-light {
     color: #fff;
     background-color: #31aa39;
     border-color: #31aa39;
 }
 
+.btn-link {
+    color: #fff;
+    background-color: #1c3947;
+    border-radius: 30px;
+}
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+}
+
 .btn-round {
     border-radius: 30px;
-  }
+}
 
 #title {
     margin: 50 50 50 50px;
@@ -69,7 +79,7 @@ form {
 .card {
     width: 30rem;
     display: table;
-  }
+}
 
 .forgot {
     text-align: center;
@@ -123,8 +133,16 @@ form {
     height: 234px;
 }
 
+.register-form {
+    margin: 5px 0px 10px 0px;
+}
+
+.form-control {
+    margin: 5px 0px 5px 0px;
+}
+
 .backImgHolder {
-    border-bottom: 60px solid rgba(49, 170, 57, .67);
+    border-bottom: 60px solid #31aa39;
     height: 230px;
 }
 
@@ -207,6 +225,25 @@ form {
     font-size: 1.4em;
 }
 
+.card .card-register {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    float: none;
+    align-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .col-md-4.offset-md-4.col-sm-6.offset-sm-3.col-10.offset-1 {
+        margin-left: 35%;
+    }
+}
+
+@media screen and (min-width: 1006px) {
+    .col-md-4.offset-md-4.col-sm-6.offset-sm-3.col-10.offset-1 {
+        margin-left: 35%;
+    }
+}
 
 @media screen and (max-width: 480px) {
 
