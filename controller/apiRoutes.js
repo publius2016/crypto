@@ -27,6 +27,8 @@ BITFINEX TICKER WEB SOCKET
   var bcc = [];
   var xmr = [];
 
+
+
   bws.on('open', (ticker) => {
     bws.subscribeTicker('BTCUSD');
     bws.subscribeTicker('LTCUSD');
@@ -112,29 +114,34 @@ BITFINEX TICKER WEB SOCKET
 /******************************************************************
 CHART API ROUTES
 ******************************************************************/
+currencyName = ["btc", "ltc", "eth", "iot", "etc", "dsh", "xrp", "bcc", "xmr"];
+var currencyClose = [];
+var chartData = {};
+var currencyCounter = 0;
+var chartGet = (currencyCounter, currency) => {
+  if(currencyCounter < 9) {
+    console.log(currency);
+    var route = "/" + currency;
+    console.log(route);
+    var currencyUpper = currency.toUpperCase();
 
-function chartGet(currency) {
-  var route = "/" + currency;
-  var currencyUpper = currency.toUpperCase();
-  app.get(route, (req, res) => {
-    var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
-    request(url, (err, response, body) => {
-      var chartData = JSON.parse(body);
-      res.send(chartData);
+      var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
+      request(url, (err, response, body) => {
+        var chartData = JSON.parse(body);
+        currencyClose.push(chartData.Data[365].close);
+        app.get(route, (req, res) => {
+          res.json(chartData);
+        });
 
-    });
-  });
-}; // END CHART FUNCTION
+        currencyCounter++;
+        chartGet(currencyCounter, currencyName[currencyCounter]);
+      }); // END REQUEST
+  }
+}; // END CHARTGET FUNCTION
 
-chartGet("btc");
-chartGet("ltc");
-chartGet("eth");
-chartGet("iot");
-chartGet("etc");
-chartGet("dsh");
-chartGet("xrp");
-chartGet("bcc");
-chartGet("xmr");
+chartGet(currencyCounter, currencyName[0]);
+
+
 
 
 /******************************************************************
@@ -189,7 +196,8 @@ app.post("/loginGate", (req, res) => {
           login: true,
           email: data[i].dataValues.email,
           name: data[i].dataValues.first_name,
-          id: data[i].dataValues.id
+          id: data[i].dataValues.id,
+          close: currencyClose
         }
 
       } // END IF ON USER AUTHENTICATION
@@ -205,13 +213,6 @@ app.post("/loginGate", (req, res) => {
         }
       }).then(function(data) {
         userData.trades = data;
-        console.log(userData);
-        console.log(typeof userData);
-        // userData = JSON.stringify(userData);
-        fs.writeFile('object.txt', userData, (err) => {
-          if (err) throw ERROR;
-          console.log("object saved");
-        });
 
         res.render("profile", { user: userData });
 
@@ -256,6 +257,7 @@ app.get("/trades", (req, res) => {
     }
   }).then(function(data) {
     userData.trades = data;
+    console.log(userData);
     res.json(userData);
   }); // END DB.TRADE.FINDALL
 }); // END APP.GET FOR TRADES OBJECT
