@@ -12,10 +12,10 @@ function tickerDisplay(currency) {
     $(currencyID + " span").empty();
 
     $(currencyID + " .last_price").append("$" + data.message.LAST_PRICE.toFixed(2));
-    $(currencyID + " .low").append("Daily Low: $" + data.message.LOW.toFixed(2));
-    $(currencyID + " .high").append("Daily High: $" + data.message.HIGH.toFixed(2));
-    $(currencyID + " .vol").append("Daily Volume: " + data.message.VOLUME.toFixed(3));
-    $(currencyID + " .chg").append("Daily Chg: $" + data.message.DAILY_CHANGE.toFixed(2));
+    $(currencyID + " .low").append("$" + data.message.LOW.toFixed(2));
+    $(currencyID + " .high").append("$" + data.message.HIGH.toFixed(2));
+    $(currencyID + " .vol").append("$" + data.message.VOLUME.toFixed(3));
+    $(currencyID + " .chg").append("$" + data.message.DAILY_CHANGE.toFixed(2));
     $(currencyID + " .percChg").append((data.message.DAILY_CHANGE_PERC * 100).toFixed(2) + "%");
 
   });

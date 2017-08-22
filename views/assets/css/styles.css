@@ -155,7 +155,7 @@ form {
 }
 
 #nav #title {
-    font-size: 40px;
+    font-size: 60px;
     letter-spacing: 3px;
 }
 
@@ -169,6 +169,10 @@ form {
 
 .menu {
     float: right;
+}
+
+.currencies {
+clear:right;
 }
 
 #currencyHolder {
@@ -185,7 +189,7 @@ form {
     margin: 20px 0 30px 10px;
     padding-top: 30px;
     padding-bottom: 50px;
-    border-top: 1px solid #d3d3d3;
+    /*border-top: 1px solid #d3d3d3;*/
 }
 
 .currencyTitle {
@@ -220,8 +224,8 @@ form {
 }
 
 .dataHolder span {
-    float: right;
-    margin-right: 20px;
+/*    float: right;
+*/    margin-right: 20px;
     font-size: 1.4em;
 }
 
@@ -231,6 +235,67 @@ form {
     margin: 0 auto;
     float: none;
     align-content: center;
+}
+
+.low {
+    padding: 6px;
+    vertical-align: middle;
+   /* border-top: 0;*/
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.high {
+    padding: 6px;
+    vertical-align: middle;
+   /* border-top: 0;*/
+   /* border-bottom: 1px solid #ddd;*/
+}
+
+.vol {
+    padding: 6px;
+    vertical-align: middle;
+   /* border-top: 0;*/
+   /* border-bottom: 1px solid #ddd;*/
+}
+
+
+.chg {
+    padding: 6px;
+    vertical-align: middle;
+   /* border-top: 0;*/
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.percChg {
+    padding: 6px;
+    vertical-align: middle;
+    /*border-top: 0;*/
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+#rowTint {
+
+  background-color: #f7f7f7;
+  width: 100%;
+}
+
+.table {
+  margin-top: 60px;
+}
+
+.tableResponsive {
+    min-height: .01%;
+    padding: 0 60px 0 60px;
+   
+}
+
+text-center {
+text-align: none;
+
+}
+
+text-right {
+text-align: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -258,4 +323,39 @@ form {
     .chg {
         display: none;
     }
+    thead {
+    display: none;
+  }
+  #nav #title {
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+}
+
+.modal-dialog {
+    width: 200px;
+}
+
+.modal-header {
+    padding: 30px;
+}
+
+.modal-title {
+    color: #31aa39;
+    font-kerning: 2px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+
+.modal-body {
+    text-align: center;
+    padding: 30px;
+}
+
+.modal-link {
+    color: #66615b;
+    font-kerning: 2px;
+    text-align: center;
+    text-decoration: none;
 }
