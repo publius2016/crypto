@@ -1,38 +1,40 @@
 <style> #nav { display: none } </style>
 
-
-<div class="wrapper">
-<div class="background">
+<div class="body-wrapper">
 <div class="page-background">
-<div class="filter"></div>
-<div class="container container-table">
-            <div class="row vertical-center-row">
-                <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-10 offset-1 ">
+  <div class="filter"></div>
+    <div class="container container-table">
+        <div class="row vertical-center-row">
+            <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-10 offset-1">
                 <div class="card card-register">
-<h1 id="title">MOOLAH</h1>
-<label>Login</label>
-<form id="login" class="register-form" method="POST" action="/loginGate">
-  <input id="email" class="form-control no-border" type="text" placeholder="Email" name="email">
-  <input id="password" class="form-control no-border" type="text" placeholder="Password" name="password">
-  <button type="submit" class="btn btn-danger btn-block btn-round">Submit</button>
-</form>
+                    
+                        <h1 id="title">MOOLAH</h1>
+                        <br>
+                        <label>Login</label>
 
-<label>Register</label>
-<form id="register" class="register-form" method="POST" action="/registration">
-  <input id="first_name" class="form-control no-border" type="text" placeholder="First Name" name="first_name">
-  <input id="last_name" class="form-control no-border" type="text" placeholder="Last Name" name="last_name">
-  <input id="email" class="form-control no-border" type="text" placeholder="Email" name="email">
-  <input id="password" class="form-control no-border" type="text" placeholder="Password" name="password">
-  <button type="submit" class="btn btn-danger btn-block btn-round">Submit</button>
-</form>
+                        <form id="login" class="register-form" method="POST" action="/loginGate">
+                          <input id="email" class="form-control no-border" type="text" placeholder="Email" name="email">
+                          <input id="password" class="form-control no-border" type="text" placeholder="Password" name="password">
+                          <button type="submit" class="btn btn-light btn-block btn-round">Submit</button>
+                        </form>
+                        <br>
 
-<div class="forgot">
-<a href="" class="btn btn-link">Forgot password?</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                        <label>Register</label>
+
+                        <form id="register" class="register-form" method="POST" action="/registration">
+                          <input id="first_name" class="form-control no-border" type="text" placeholder="First Name" name="first_name">
+                          <input id="last_name" class="form-control no-border" type="text" placeholder="Last Name" name="last_name">
+                          <input id="email" class="form-control no-border" type="text" placeholder="Email" name="email">
+                          <input id="password" class="form-control no-border" type="text" placeholder="Password" name="password">
+                          <button type="submit" class="btn btn-light btn-block btn-round">Register</button>
+                        </form>
+
+                      <div class="forgot">
+                        <a href="" class="btn btn-link">Forgot password?</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
