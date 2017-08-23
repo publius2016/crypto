@@ -137,7 +137,7 @@ var chartGet = (currencyCounter, currency) => {
       var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
       request(url, (err, response, body) => {
         var chartData = JSON.parse(body);
-        console.log(chartData.Data[365].close);
+        // console.log(chartData.Data[365].close);
         currencyClose.push(chartData.Data[365].close);
         app.get(route, (req, res) => {
           res.json(chartData);
@@ -167,7 +167,7 @@ app.get("/currency/:type", (req, res) => {
   res.render("currency");
 
 }); // END APP.GET FOR CURRENCY
-console.log(currencyType);
+// console.log(currencyType);
 app.get("/currencyProfile", (req, res) => {
   res.json(currencyType);
 }); // END APP.GET FOR CURRENCY PROFILE
@@ -179,10 +179,10 @@ TWITTER & NEWS API ROUTES
 app.get("/news", (req, res) => {
   var newsKey = "4f846a511c92490bb6e1df37b9da9b7a";
   var url = "https://newsapi.org/v1/articles?source=the-economist&sortBy=latest&apiKey=" + newsKey;
-  console.log("TEST URL:" + url);
+  // console.log("TEST URL:" + url);
   request(url, (err, response, body) => {
     if (err) throw ERROR;
-    console.log(body);
+    // console.log(body);
     res.json(body);
   });
 });
@@ -199,7 +199,7 @@ function theirTweets(twitterCounter, handle) {
       if (error) {
         console.log("Twitter Error: " + error);
       }
-      console.log(twitterRoute);
+      // console.log(twitterRoute);
 
       var tweetData = tweets;
       app.get(twitterRoute, (req, res) => {
@@ -312,7 +312,7 @@ app.get("/trades", (req, res) => {
     }
   }).then(function(data) {
     userData.trades = data;
-    console.log(userData);
+    // console.log(userData);
     res.json(userData);
   }); // END DB.TRADE.FINDALL
 }); // END APP.GET FOR TRADES OBJECT
@@ -341,7 +341,7 @@ app.delete("/delete/:id", (req, res) => {
 }); // END APP.POST FOR DELETING TRADE
 
 app.put("/update/:id", (req, res) => {
-  console.log("Update Req:" + JSON.stringify(req.body));
+  // console.log("Update Req:" + JSON.stringify(req.body));
   db.Trade.update({
     unit_amount: req.body.units,
     unit_price_usd: req.body.price
