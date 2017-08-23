@@ -1,20 +1,33 @@
 <script src="/js/currency.js" async></script>
+<div class="body-wrapper">
+<div class="page-background">
+  <div class="tableResponsive-currency">
+  <div class="jumbotron-currency">
+  <div id="currencyHolder">
+    <h1 id="currencyTitle"></h1>
+        <p class="last_price"></p>
+        <p class="low"></p>
+        <p class="high"></p>
+        <p class="vol"></p>
+        <p class="chg"></p>
+        <p class="percChg"></p>
 
-<div id="currencyHolder">
-  <h1 id="currencyTitle"></h1>
-  <p>Last Price: $<span class="last_price"></span></p>
-  <p>24HR Low: $<span class="low"></span></p>
-  <p>24HR High: $<span class="high"></span></p>
-  <p>24HR Volume: <span class="vol"></span></p>
-  <p>Daily Chg: $<span class="chg"></span></p>
-  <p>Daily Chg %: <span class="percChg"></span>%</p>
+  </div>
 
+  <div id="chartHolder">
+    <canvas id=""></canvas>
+  </div>
+
+  <div id="newsHolder">
+    <h2>News</h2>
+
+  </div>
+
+  <div id="twitterHolder">
+    <h2>Tweets</h2>
+
+  </div>
 </div>
-
-<div id="chartHolder">
-  <canvas id=""></canvas>
 </div>
-
-<div id="newsHolder">
-
+</div>
 </div>

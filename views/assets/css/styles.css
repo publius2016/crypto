@@ -90,7 +90,7 @@ form {
     background-position: center center;
     background-size: cover;
     min-height: 100vh;
-    max-height: 999px;
+    max-height: 100%;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -183,6 +183,16 @@ form {
 #currencyHolder {
     margin-top: 50px;
 }
+
+
+
+#currencyHolder p {
+  margin: 10px 0 10px 0;
+  padding: 0;
+  font-size: 1.3em;
+}
+
+
 
 .currencyData {
     clear: both;
@@ -315,15 +325,39 @@ text-align: none;
 
 .articleHolder {
   width: 90%;
-  margin: 0 auto;
+  margin: 0;
   clear: both;
+  border-bottom: 1px solid #d3d3d3;
+  padding-bottom: 10px;
 }
 
 .articleImg {
-
   float: left;
   width: 20%;
   height: 16%;
+  margin: 0 10px 10px 0;
+}
+
+.pubDate {
+  font-size: .8em;
+}
+
+.newsUrl {
+  display: block;
+  clear: both;
+  font-size: .8em;
+}
+
+#currencyHolder {
+  width: 45%;
+  float: left;
+  margin: 0 2%;
+}
+
+#chartHolder {
+  width: 45%;
+  float: left;
+  margin: 0 2%;
 }
 
 @media screen and (max-width: 480px) {
@@ -408,6 +442,18 @@ text-align: none;
     border-radius: 15px;
     padding-right: 30px;
     padding-left: 30px;
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+.jumbotron-currency {
+  background-color: #f9f9f9;
+  width: 90%;
+  margin: 40px auto;
+  border-radius: 15px;
+  padding: 30px;
+
+  overflow-y: auto;
 }
 
 #login-successful {
@@ -425,4 +471,44 @@ th.test {
 
 .editable {
     width: 75px;
+}
+
+#newsHolder {
+  width: 45%;
+  display: inline-block;
+  clear: both;
+  float: left;
+  margin: 0 2%;
+
+}
+
+#newsHolder h2 {
+
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+#twitterHolder {
+  width: 45%;
+  float: left;
+  margin: 0 2%;
+}
+
+#twitterHolder h2 {
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
+
+}
+
+.tweetHolder {
+  margin: 30px 2%;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.tweetHolder .date {
+  font-size: .8em;
+}
+
+.tweetHolder .text {
+  font-size: 1.1em;
 }

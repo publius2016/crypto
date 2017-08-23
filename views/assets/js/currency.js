@@ -12,12 +12,13 @@ function tickerDisplay(currency) {
     currencyID = currency + "/USD";
     currencyID = currencyID.toUpperCase();
     $("#currencyTitle").text(currencyID);
-    $("#currencyHolder .last_price").append(data.message.LAST_PRICE);
-    $("#currencyHolder .low").append(data.message.LOW);
-    $("#currencyHolder .high").append(data.message.HIGH);
-    $("#currencyHolder .vol").append(data.message.VOLUME);
-    $("#currencyHolder .chg").append(data.message.DAILY_CHANGE);
-    $("#currencyHolder .percChg").append(data.message.DAILY_CHANGE_PERC * 100);
+    $("#currencyHolder p").empty();
+    $(".last_price").append("Last Price: $" + data.message.LAST_PRICE.toFixed(2));
+    $(".low").append("24HR Low: $" + data.message.LOW.toFixed(2));
+    $("#currencyHolder .high").append("24HR High: $" + data.message.HIGH.toFixed(2));
+    $("#currencyHolder .vol").append("24HR Volume: " + data.message.VOLUME.toFixed(3));
+    $("#currencyHolder .chg").append("Daily Chg: $" + data.message.DAILY_CHANGE.toFixed(2));
+    $("#currencyHolder .percChg").append("Daily Chg %: " + (data.message.DAILY_CHANGE_PERC * 100).toFixed(2) + "%");
     console.log(currencyID);
     console.log(data.message);
   });
@@ -29,14 +30,26 @@ function tickerDisplay(currency) {
 /******************************************************************
 CHART API ROUTES
 ******************************************************************/
+
+$("#chart-icon").hide();
+
 $.ajax({
   method: "GET",
   url: "/currencyProfile"
 }).done(function(result) {
   console.log(result.currency);
+
+  function removeChart(currency) {
+    var chartID = "#" + currency + "Modal";
+    console.log(chartID);
+    $(chartID).remove();
+  }; // END REMOVECHART FUNCTION
+
+
   var currency = result.currency;
+  removeChart(currency);
   var chartId = currency + "Chart";
-  
+
   if (currency == "btc") {
     var twitterRoute = "/Bitcoin";
   } else if (currency == "ltc") {
@@ -66,7 +79,7 @@ $.ajax({
       var time = [];
       var close = [];
 
-      for (var i = 0; i < data.Data.length; i++) {
+      for (var i = 335; i < 365; i++) {
         time.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
         close.push(data.Data[i].close);
       }
@@ -80,8 +93,7 @@ $.ajax({
             labels: time,
             datasets: [{
                 label: chartLabel,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(74, 169, 86)',
                 data: close,
             }]
         },
@@ -94,12 +106,27 @@ $.ajax({
   chart(currency);
 
 
+
+
   $.ajax({
     method: "GET",
     url: twitterRoute
   }).done(function (data) {
     console.log(data);
+    console.log(twitterRoute);
+    console.log(parsedRoute);
+    var parsedRoute = twitterRoute.substring(1);
+    $("#twitterHolder h2").prepend("@" + parsedRoute + " ");
+    for (var i = 0; i < data.length; i++) {
+      var $div = $("<div class='tweetHolder'>");
+      var date = data[i].created_at;
+      date = date.substring(0, date.indexOf("+"));
+      $div.append("<p class='date'>" + date + "</p>");
+      $div.append("<p class='text'>" + data[i].text + "</p>");
+      $("#twitterHolder").append($div);
 
+
+    }
   });
 
 
@@ -124,12 +151,13 @@ $.ajax({
     var url = result.articles[i].url;
     var imageUrl = result.articles[i].urlToImage;
     var pubDate = result.articles[i].publishedAt;
+    pubDate = pubDate.substring(0, pubDate.indexOf("T"));
     $div.append("<h3 class='title'>" + title + "</h3>");
-    $div.append("<p class='pubdate'>" + pubDate + "</p>");
+    $div.append("<p class='pubDate'>" + pubDate + "</p>");
     $div.append("<p class='author'>" + author + "</p>");
     $div.append("<img class='articleImg' src='" + imageUrl + "' alt='Headline Image'>");
     $div.append("<p class='description'>" + description + "</p>");
-    $div.append("<a href='" + url + "'>" + url + "</a>");
+    $div.append("<a class='newsUrl' href='" + url + "'>" + url + "</a>");
     $("#newsHolder").append($div);
   }
 
@@ -139,6 +167,11 @@ $.ajax({
 TWITTER API ROUTE
 ******************************************************************/
 
+function tweets () {
+
+
+
+}
 
 
 

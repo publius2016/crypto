@@ -178,7 +178,7 @@ TWITTER & NEWS API ROUTES
 
 app.get("/news", (req, res) => {
   var newsKey = "4f846a511c92490bb6e1df37b9da9b7a";
-  var url = "https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=" + newsKey;
+  var url = "https://newsapi.org/v1/articles?source=the-economist&sortBy=latest&apiKey=" + newsKey;
   console.log("TEST URL:" + url);
   request(url, (err, response, body) => {
     if (err) throw ERROR;
