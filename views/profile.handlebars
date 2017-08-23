@@ -1,6 +1,11 @@
 <script src="/js/profile.js" async></script>
-<h1>Login Successful</h1>
-<h2>Welcome, {{user.name}}</h2>
+<div class="body-wrapper">
+<div class="page-background">
+  <div class="tableResponsive">
+  <div class="jumbotron">
+  <p id="login-successful">Login Successful</p>
+  <h3>Welcome, {{user.name}}</h3>
+
 
 <form id="formHolder">
   <table id="tradeHolder">
@@ -22,22 +27,57 @@
   </table>
 </form>
 
-<h1>Create a New Trade</h1>
-<form id="trades" method="POST" action="/newTrade">
-  <select id="currency" name="currency">
-    <option value="btc">BTC</option>
-    <option value="ltc">LTC</option>
-    <option value="eth">ETH</option>
-    <option value="iot">IOT</option>
-    <option value="etc">ETC</option>
-    <option value="dsh">DSH</option>
-    <option value="xrp">XRP</option>
-    <option value="bcc">BCC</option>
-    <option value="xmr">XMR</option>
-  </select>
-  <input id="units" name="units" placeholder="Units">
-  <input id="unit_purchase_price" name="unit_purchase_price" placeholder="Unit Purchase Price">
-  <button type="submit">Submit</button>
+  <table id="tradeHolder">
+    <thead>
+      <th class="test">Currency</th>
+      <th class="test">Units</th>
+      <th class="test">Date Purchased</th>
+      <th class="test">Purchase Price (USD)</th>
+      <th class="test">Principal Val</th>
+      <th class="test">Current Val</th>
+      <th class="test">Daily chg $</th>
+      <th class="test">Daily chg %</th>
+    </thead>
+    <tbody>
+    <!-- {{#each user.trades}}
+      <tr>
+        <td>{{this.currency}}</td>
+        <td><input class="editable" name="units" id="units{{this.id}}" placeholder="{{this.unit_amount}}"></td>
+        <td>{{this.createdAt}}</td>
+        <td><input class="editable" name="price" id="price{{this.id}}" placeholder="{{this.unit_price_usd}}"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="update" data-id="{{this.id}}">Update</button></td>
+        <td><button class="delete" data-id="{{this.id}}">Delete</button></td>
+      </tr>
+    {{/each}} -->
+    <tbody>
+  </table>
 
 
-</form>
+<br>
+
+  <h2 id="createANewTrade">Create a New Trade</h2>
+  <form id="trades" method="POST" action="/newTrade">
+    <select id="currency" name="currency">
+      <option value="btc">Bitcoin</option>
+      <option value="ltc">Litecoin</option>
+      <option value="eth">Ethereum</option>
+      <option value="iot">IOTA</option>
+      <option value="etc">Ethereum Classic</option>
+      <option value="dsh">Dash</option>
+      <option value="xrp">Ripple</option>
+      <option value="bcc">Bitcoin Cash</option>
+      <option value="xmr">Monero</option>
+    </select>
+    <input id="units" name="units" placeholder="Units">
+    <input id="unit_purchase_price" name="unit_purchase_price" placeholder="Unit Purchase Price">
+    <button type="submit" class="btn btn-light btn-round">Submit</button>
+
+
+  </form>
+  </div>
+</div>
+</div>
+</div>

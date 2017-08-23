@@ -128,7 +128,7 @@ form {
     padding-bottom: 50px;
     border-bottom: 4px solid #CCCACC;
     background-color: #4AA956;
-    opacity: .8;
+    opacity: 100%;
     position: relative;
     height: 234px;
 }
@@ -147,11 +147,12 @@ form {
 }
 
 #nav h1 {
-    width: 40%;
+    width: 25%;
     margin: 0 0 0 20px;
     color: #FFF;
     padding-top: 70px;
     float: left;
+
 }
 
 #nav #title {
@@ -172,7 +173,7 @@ form {
 }
 
 .currencies {
-clear:right;
+    clear:right;
 }
 
 #currencyHolder {
@@ -194,18 +195,20 @@ clear:right;
 
 .currencyTitle {
     float: left;
+    width: 100%;
 }
 
 .currencyTitle img {
-    width: 30px;
-    height: 30px;
+    width: 55px;
+    height: 55px;
     float: left;
+    margin-right: 100px
 }
 
 .currencyTitle h2 {
     font-size: 1.4em;
     display: inline;
-    margin-left: 6px;
+    /*margin-left: 6px;*/
 }
 
 .currencyTitle p {
@@ -215,12 +218,12 @@ clear:right;
 }
 
 .last_price {
-    margin-left: 37px;
+   /* margin-left: 37px;*/
     margin-top: 0;
 }
 
 .dataHolder {
-    float: right;
+   /* float: right;*/
 }
 
 .dataHolder span {
@@ -274,7 +277,6 @@ clear:right;
 }
 
 #rowTint {
-
   background-color: #f7f7f7;
   width: 100%;
 }
@@ -302,6 +304,7 @@ text-align: none;
     .col-md-4.offset-md-4.col-sm-6.offset-sm-3.col-10.offset-1 {
         margin-left: 35%;
     }
+
 }
 
 @media screen and (min-width: 1006px) {
@@ -340,6 +343,7 @@ text-align: none;
   #nav #title {
     font-size: 40px;
     letter-spacing: 3px;
+
   }
 
   .articleImg {
@@ -347,6 +351,30 @@ text-align: none;
 
   }
 
+
+
+}
+.currencyTitle p {
+    font-size: .8em;
+    margin-left: 0px;
+    margin-bottom: 0;
+}
+
+.currencyTitle img {
+    width: 55px;
+    height: 55px;
+    float: left;
+  /*  margin-right: 100px*/
+    margin-bottom: 15px
+}
+}
+
+#menuModal .modal-dialog {
+    width: 250px;
+}
+
+#chartModal .modal-dialog {
+    width: 400px;
 
 }
 
@@ -358,7 +386,6 @@ text-align: none;
 .modal-title {
     color: #31aa39;
     font-kerning: 2px;
-    font-weight: bold;
     text-align: center;
     font-size: 25px;
 }
@@ -373,4 +400,29 @@ text-align: none;
     font-kerning: 2px;
     text-align: center;
     text-decoration: none;
+}
+
+.jumbotron {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#login-successful {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+#createANewTrade {
+    color: #31aa39;
+}
+
+th.test {
+    padding-right: 50px;
+}
+
+.editable {
+    width: 75px;
 }
