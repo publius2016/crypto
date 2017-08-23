@@ -27,7 +27,7 @@ app.set("view engine", "handlebars");
 
 
 var PORT = process.env.PORT || 3000;
-var SQLPORT = process.env.PORT || 8080;
+var SQLPORT = process.env.PORT || 80;
 
 server = http.Server(app);
 server.listen(PORT);
