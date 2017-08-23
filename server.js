@@ -27,7 +27,7 @@ app.set("view engine", "handlebars");
 
 
 var PORT = process.env.PORT || 3000;
-var SQLPORT = process.env.PORT || 80;
+var SQLPORT = process.env.PORT || 8080;
 
 server = http.Server(app);
 server.listen(PORT);
@@ -35,9 +35,9 @@ io = socketIO(server);
 
 
 db.sequelize.sync({ force: false }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + SQLPORT);
-  });
+  // app.listen(SQLPORT, function() {
+  //   console.log("App listening on PORT " + SQLPORT);
+  // });
 });
 
 require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs, Twitter);
