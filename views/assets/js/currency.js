@@ -36,6 +36,27 @@ $.ajax({
   console.log(result.currency);
   var currency = result.currency;
   var chartId = currency + "Chart";
+  
+  if (currency == "btc") {
+    var twitterRoute = "/Bitcoin";
+  } else if (currency == "ltc") {
+    var twitterRoute = "/LiteCoinProject";
+  } else if (currency == "eth") {
+    var twitterRoute = "/ethereumproject";
+  } else if (currency == "iot") {
+    var twitterRoute = "/iotatoken";
+  } else if (currency == "etc") {
+    var twitterRoute = "/eth_classic";
+  } else if (currency == "dsh") {
+    var twitterRoute = "/Dashpay";
+  } else if (currency == "xrp") {
+    var twitterRoute = "/Ripple";
+  } else if (currency == "bcc") {
+    var twitterRoute = "/Bitcoin";
+  } else if (currency == "xmr") {
+    var twitterRoute = "/monerocurrency";
+  }
+
   tickerDisplay(currency);
   function chart (currency) {
     var route = "/" + currency;
@@ -66,15 +87,59 @@ $.ajax({
         },
         options: {}
       });
-    });
-
-
+    }); // END GET
   }; // END CHART FUNCTION
+
   $("#chartHolder canvas").attr("id", chartId);
   chart(currency);
 
 
+  $.ajax({
+    method: "GET",
+    url: twitterRoute
+  }).done(function (data) {
+    console.log(data);
+
+  });
+
+
 }); // END DONE ON AJAX FOR CURRENCY PROFILE
+
+
+/******************************************************************
+NEWS API ROUTE
+******************************************************************/
+$.ajax({
+  method: "GET",
+  url: "/news"
+}).done(function(result) {
+  result = JSON.parse(result);
+  console.log(result);
+  console.log(typeof result);
+  for (var i = 0; i < result.articles.length; i++) {
+    var $div = $("<div class='articleHolder'>");
+    var title = result.articles[i].title;
+    var author = result.articles[i].author;
+    var description = result.articles[i].description;
+    var url = result.articles[i].url;
+    var imageUrl = result.articles[i].urlToImage;
+    var pubDate = result.articles[i].publishedAt;
+    $div.append("<h3 class='title'>" + title + "</h3>");
+    $div.append("<p class='pubdate'>" + pubDate + "</p>");
+    $div.append("<p class='author'>" + author + "</p>");
+    $div.append("<img class='articleImg' src='" + imageUrl + "' alt='Headline Image'>");
+    $div.append("<p class='description'>" + description + "</p>");
+    $div.append("<a href='" + url + "'>" + url + "</a>");
+    $("#newsHolder").append($div);
+  }
+
+}); // END DONE ON AJAX FOR NEWS
+
+/******************************************************************
+TWITTER API ROUTE
+******************************************************************/
+
+
 
 
 }); // END READY

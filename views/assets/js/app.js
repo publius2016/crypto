@@ -42,7 +42,7 @@ function chart (currency) {
     var time = [];
     var close = [];
 
-    for (var i = 0; i < data.Data.length; i++) {
+    for (var i = 335; i < 365; i++) {
       time.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
       close.push(data.Data[i].close);
     }
@@ -56,8 +56,7 @@ function chart (currency) {
           labels: time,
           datasets: [{
               label: chartLabel,
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(74, 169, 86)',
               data: close,
           }]
       },

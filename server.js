@@ -7,6 +7,7 @@ var helmet = require("helmet");
 var mysql = require("mysql");
 var request = require("request");
 var BFX = require("bitfinex-api-node");
+var Twitter = require('twitter');
 var app = express();
 var http = require('http');
 var socketIO = require("socket.io");
@@ -39,5 +40,5 @@ db.sequelize.sync({ force: false }).then(function() {
   });
 });
 
-require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs);
+require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs, Twitter);
 require("./controller/htmlRoutes.js")(app, path, bodyParser);
