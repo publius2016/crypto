@@ -286,7 +286,7 @@ clear:right;
 .tableResponsive {
     min-height: .01%;
     padding: 0 60px 0 60px;
-   
+
 }
 
 text-center {
@@ -310,31 +310,46 @@ text-align: none;
     }
 }
 
+.articleHolder {
+  width: 90%;
+  margin: 0 auto;
+  clear: both;
+}
+
+.articleImg {
+
+  float: left;
+  width: 20%;
+  height: 16%;
+}
+
 @media screen and (max-width: 480px) {
 
-    h3 {
-        display: inline;
-    }
+  h3 {
+    display: inline;
+  }
 
-    .minHide,
-    .low,
-    .high,
-    .vol,
-    .chg {
-        display: none;
-    }
-    thead {
+  .minHide, .low, .high, .vol, .chg {
     display: none;
   }
+
+  thead {
+    display: none;
+  }
+
   #nav #title {
     font-size: 40px;
     letter-spacing: 3px;
-}
+  }
+
+  .articleImg {
+    width: 100%;
+
+  }
+
+
 }
 
-.modal-dialog {
-    width: 200px;
-}
 
 .modal-header {
     padding: 30px;

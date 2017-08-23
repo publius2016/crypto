@@ -1,6 +1,15 @@
 var db = require("../models");
 
-module.exports = function (app, path, bodyParser, request, BFX, io, fs) {
+module.exports = function (app, path, bodyParser, request, BFX, io, fs, Twitter) {
+
+  var twitterKeys = {
+    consumer_key: 'VRWrLHgl3PVTmIefLWZSf3AgM',
+    consumer_secret: 'Q1taFQkawbPPSz8CnluABVIUrjYwDYuNP34PdkxrICVHRIovbf',
+    access_token_key: '880453826775588865-yuvMcs4hKc5jNC7IW1CTrrhdYZPGUex',
+    access_token_secret: 'iNNBjICR8OiJ1IesK539WZa6lqHddhHPJGzHcUh43MxN5'
+  }
+
+  var twitterClient = new Twitter(twitterKeys);
 
 
 /******************************************************************
@@ -128,6 +137,7 @@ var chartGet = (currencyCounter, currency) => {
       var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
       request(url, (err, response, body) => {
         var chartData = JSON.parse(body);
+        console.log(chartData.Data[365].close);
         currencyClose.push(chartData.Data[365].close);
         app.get(route, (req, res) => {
           res.json(chartData);
@@ -149,7 +159,7 @@ CURRENCY API ROUTES
 ******************************************************************/
 var currencyType = {};
 app.get("/currency/:type", (req, res) => {
-  console
+
   currencyType = {
     currency: req.params.type
   }
@@ -161,6 +171,51 @@ console.log(currencyType);
 app.get("/currencyProfile", (req, res) => {
   res.json(currencyType);
 }); // END APP.GET FOR CURRENCY PROFILE
+
+/******************************************************************
+TWITTER & NEWS API ROUTES
+******************************************************************/
+
+app.get("/news", (req, res) => {
+  var newsKey = "4f846a511c92490bb6e1df37b9da9b7a";
+  var url = "https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=" + newsKey;
+  console.log("TEST URL:" + url);
+  request(url, (err, response, body) => {
+    if (err) throw ERROR;
+    console.log(body);
+    res.json(body);
+  });
+});
+
+
+twitterName = ["Bitcoin", "Ripple", "iotatoken", "LiteCoinProject", "Dashpay", "monerocurrency", "eth_classic", "ethereumproject"];
+var twitterCounter = 0;
+function theirTweets(twitterCounter, handle) {
+  if (twitterCounter < 8) {
+    var twitterRoute = "/" + handle;
+    var screenName = {screen_name: handle};
+
+    twitterClient.get('statuses/user_timeline', screenName, (error, tweets, response) => {
+      if (error) {
+        console.log("Twitter Error: " + error);
+      }
+      console.log(twitterRoute);
+
+      var tweetData = tweets;
+      app.get(twitterRoute, (req, res) => {
+        res.json(tweetData);
+      });
+
+      twitterCounter++;
+      theirTweets(twitterCounter, twitterName[twitterCounter]);
+    }); // END TWITTER GET AND CALLBACK
+
+  }
+} // END THEIRTWEETS FUNCTION
+
+theirTweets(0, twitterName[0]);
+
+
 
 
 /******************************************************************
