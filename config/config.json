@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": "password",
-    "database": "moolah_db",
-    "host": "127.0.0.1",
+    "username": "bd559a0303eac9",
+    "password": "b3d0ed97",
+    "database": "heroku_f73f3af94d9e8ec",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "N37473747n",
-    "database": "moolah_db",
-    "host": "127.0.0.1",
+    "username": "bd559a0303eac9",
+    "password": "b3d0ed97",
+    "database": "heroku_f73f3af94d9e8ec",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "N37473747n",
-    "database": "moolah_db",
-    "host": "127.0.0.1",
+    "username": "bd559a0303eac9",
+    "password": "b3d0ed97",
+    "database": "heroku_f73f3af94d9e8ec",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   }
 }
