@@ -1,381 +1,302 @@
   <script src="/js/app.js" async></script>
 
-  <div class="tableResponsive">
     <table class="table">
       <thead>
         <tr>
-          <th>#</th>
-          
-          <th>Name</th>
-          <th>24HR LOW</th>
-          <th>24HR HIGH</th>
-          <th>24HR VOLUME</th>
-          <th>DAILY CHG</th>
-          <th>DAILY CHG %</th>
+          <th>Currency</th>
+          <th class="lowCell">24HR LOW</th>
+          <th class="highCell">24HR HIGH</th>
+          <th class="volCell">24HR VOLUME</th>
+          <th class="chgCell">DAILY CHG</th>
+          <th class="percCell">DAILY CHG %</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr  class= "rowTint" id="btc">
-          <td class="text-center" >1</td>
+        <tr class= "" id="btc">
+          <td>
+            <div class="currencyTitle">
+              <h2>Bitcoin</h2>
+              <img src="../images/bitcoin-icon.png" alt="Bitcoin" class="currencyIcon">
+              <p><a href="/currency/btc">BTC/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
 
-          <td> 
-          <div class="currencyTitle">
-            <img src="../images/bitcoin-icon.png" alt="Bitcoin" class="currencyIcon">
-            <h2>Bitcoin</h2>
-            <p><a href="/currency/btc">BTC/USD</a></p>
-            <span class="last_price"></span>
-          </div>
-        </td>
-
-        <td> 
-          <div class="dataHolder">
+          <td class="lowCell">
             <span class="low"></span>
-          </div>
-        </td>
-        <td>
-          <div class="dataHolder">
+          </td>
+
+          <td class="highCell">
             <span class="high"></span>
-          </div>
-        </td>
-        <td>
-          <div class="dataHolder">
+          </td>
+
+          <td class="volCell">
             <span class="vol"></span>
-          </div>
-        </td>
-        <td>
-         <div class="dataHolder">
-          <span class="chg"></span>
-        </div>
-      </td>
-      <td>
-        <div class="dataHolder">
-          <span class="percChg"></span>
-        </div>
-      </td>
-    </tr>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-    <tr id="ltc" >
-      <td>2</td>
-      <td> 
-      <div class="currencyTitle">
-        <img src="../images/litecoin-icon.png" alt="Litecoin" class="currencyIcon">
-        <h2>Litecoin</h2>
-        <p><a href="/currency/ltc">LTC/USD</a></p>
-        <span class="last_price"></span>
-      </div>
-    </td>
-    <td> 
-      <div class="dataHolder">
-        <span class="low"></span>
-      </div>
-    </td>
-    <td>
-      <div class="dataHolder">
-        <span class="high"></span>
-      </div>
-    </td>
-    <td>
-      <div class="dataHolder">
-        <span class="vol"></span>
-      </div>
-    </td>
-    <td>
-     <div class="dataHolder">
-      <span class="chg"></span>
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr id="ltc">
+          <td>
+            <div class="currencyTitle">
+              <h2>Litecoin</h2>
+              <img src="../images/litecoin-icon.png" alt="Litecoin" class="currencyIcon">
+              <p><a href="/currency/ltc">LTC/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
+
+        <tr  class= ""  id="eth">
+          <td>
+            <div class="currencyTitle">
+              <h2>Ethereum</h2>
+              <img src="../images/ethereum-icon.png" alt="Ethereum" class="currencyIcon">
+              <p><a href="/currency/eth">ETH/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-  <tr  class= "rowTint"  id="eth" >
-    <td>3</td>
-    <td> 
-    <div class="currencyTitle">
-      <img src="../images/ethereum-icon.png" alt="Ethereum" class="currencyIcon">
-      <h2>Ethereum</h2>
-      <p><a href="/currency/eth">ETH/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder">
-      <span class="low"></span>
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">  
-      <span class="high"></span>
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder">
-    <span class="chg"></span>
-  </div>      
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr id="iot">
+          <td>
+            <div class="currencyTitle" >
+              <h2>IOTA</h2>
+              <img src="../images/iota-icon.png" alt="Iota" class="currencyIcon">
+              <p><a href="/currency/iot">IOT/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-  <tr id="iot" >
-    <td>4</td>
-    <td> 
-    <div class="currencyTitle" >
-      <img src="../images/iota-icon.png" alt="Iota" class="currencyIcon">
-      <h2>IOTA</h2>
-      <p><a href="/currency/iot">IOT/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder">
-      <span class="low"></span> 
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="high"></span>
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder">
-    <span class="chg"></span>
-  </div>      
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr  class= "" id="etc" >
+          <td>
+            <div class="currencyTitle" >
+              <h2>Ethereum Classic</h2>
+              <img src="../images/ethereum-classic-icon.png" alt="Ethereum Classic" class="currencyIcon">
+              <p><a href="/currency/etc">ETC/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-  <tr  class= "rowTint" id="etc" >
-    <td>5</td>
-    <td> 
-    <div class="currencyTitle" >
-      <img src="../images/ethereum-classic-icon.png" alt="Ethereum Classic" class="currencyIcon">
-      <h2>Ethereum Classic</h2>
-      <p><a href="/currency/etc">ETC/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder">
-      <span class="low"></span>          
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >          
-      <span class="high"></span>         
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder" >
-    <span class="chg"></span>
-  </div>  
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr id="dsh">
+          <td>
+            <div class="currencyTitle" >
+              <h2>Dash</h2>
+              <img src="../images/dash-icon.png" alt="Dash" class="currencyIcon">
+              <p><a href="/currency/dsh">DSH/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-  <tr id="dsh" >
-    <td>6</td>
-    <td> 
-    <div class="currencyTitle" >
-      <img src="../images/dash-icon.png" alt="Dash" class="currencyIcon">
-      <h2>Dash</h2>
-      <p><a href="/currency/dsh">DSH/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder" >
-      <span class="low"></span>          
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >          
-      <span class="high"></span>          
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder" >
-    <span class="chg"></span>
-  </div>      
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr  class = "" id= "xrp">
+          <td>
+            <div class="currencyTitle">
+              <h2>Ripple</h2>
+              <img src="../images/ripple-icon.png" alt="Ripple" class="currencyIcon">
+              <p><a href="/currency/xrp">XRP/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-  <tr  class = "rowTint" id= "xrp">
-    <td >7</td>
-    <td> 
-    <div class="currencyTitle">
-      <img src="../images/ripple-icon.png" alt="Ripple" class="currencyIcon">
-      <h2>Ripple</h2>
-      <p><a href="/currency/xrp">XRP/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder">
-      <span class="low"></span>    
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">       
-      <span class="high"></span>       
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder">
-    <span class="chg"></span>
-  </div>      
-  </td>
-  <td>
-    <div class="dataHolder">
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr id="bcc" >
+          <td>
+            <div class="currencyTitle" >
+              <h2>Bitcoin Cash</h2>
+              <img src="../images/bitcoin-cash-icon.png" alt="Bitcoin Cash" class="currencyIcon">
+              <p><a href="/currency/bcc">BCC/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
+
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
+
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
+
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
+
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
+
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
 
 
-  <tr id="bcc" >
-    <td>8</td>
-    <td> 
-    <div class="currencyTitle" >
-      <img src="../images/bitcoin-cash-icon.png" alt="Bitcoin Cash" class="currencyIcon">
-      <h2>Bitcoin Cash</h2>
-      <p><a href="/currency/bcc">BCC/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder" >
-      <span class="low"></span>         
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >         
-      <span class="high"></span>         
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder">
-    <span class="chg"></span>
-  </div>  
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+        <tr  class= "" id="xmr">
+          <td>
+            <div class="currencyTitle" >
+              <h2>Monero</h2>
+              <img src="../images/monero-icon.png" alt="Monero" class="currencyIcon">
+              <p><a href="/currency/xmr">XMR/USD</a></p>
+              <span class="last_price"></span>
+            </div>
+          </td>
 
+          <td class="lowCell">
+            <span class="low"></span>
+          </td>
 
-  <tr  class= "rowTint" id="xmr">
-    <td>9</td>
-    <td> 
-    <div class="currencyTitle" >
-      <img src="../images/monero-icon.png" alt="Monero" class="currencyIcon">
-      <h2>Monero</h2>
-      <p><a href="/currency/xmr">XMR/USD</a></p>
-      <span class="last_price"></span>
-    </div>
-  </td>
-  <td> 
-    <div class="dataHolder" >
-      <span class="low"></span>         
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder"          
-      <span class="high"></span>         
-    </div>
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="vol"></span>
-    </div>
-  </td>
-  <td>
-   <div class="dataHolder" >
-    <span class="chg"></span>
-  </div>    
-  </td>
-  <td>
-    <div class="dataHolder" >
-      <span class="percChg"></span>
-    </div>
-  </td>
-  </tr>
+          <td class="highCell">
+            <span class="high"></span>
+          </td>
 
+          <td class="volCell">
+            <span class="vol"></span>
+          </td>
 
-  </tbody>
-  </table>
-  </div>
+          <td class="chgCell">
+            <span class="chg"></span>
+          </td>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <td class="percCell">
+            <span class="percChg"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>

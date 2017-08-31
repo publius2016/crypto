@@ -4,9 +4,11 @@ $(function () {
 BITFINEX TICKER WEB SOCKET DISPLAY
 ******************************************************************/
 
+
 var socket = io.connect('/');
 
 function tickerDisplay(currency) {
+
   socket.on(currency, (data) => {
     currencyID = "#"+ currency;
     $(currencyID + " span").empty();
@@ -19,6 +21,7 @@ function tickerDisplay(currency) {
 
   });
 }; // END TICKERDISPLAY FUNCTION
+
 
 tickerDisplay("btc");
 tickerDisplay("ltc");
@@ -35,14 +38,19 @@ tickerDisplay("xmr");
 CHART API ROUTES
 ******************************************************************/
 
-function chart (currency) {
+function chart (limit, currency) {
+  var id = currency + "Chart";
+  var modal = "#" + currency + "Modal";
+  $("#" + id).remove();
+
+  $(modal + " .modal-body").append("<canvas id='" + id + "'></canvas>");
   var route = "/" + currency;
   $.get(route, (data) => {
 
     var time = [];
     var close = [];
 
-    for (var i = 335; i < 365; i++) {
+    for (var i = limit; i < 365; i++) {
       time.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
       close.push(data.Data[i].close);
     }
@@ -65,15 +73,40 @@ function chart (currency) {
   });
 }; // END CHART FUNCTION
 
-chart("btc");
-chart("ltc");
-chart("eth");
-chart("iot");
-chart("etc");
-chart("dsh");
-chart("xrp");
-chart("bcc");
-chart("xmr");
+chart(335, "btc");
+chart(335, "ltc");
+chart(335, "eth");
+chart(335, "iot");
+chart(335, "etc");
+chart(335, "dsh");
+chart(335, "xrp");
+chart(335, "bcc");
+chart(335, "xmr");
+
+$(".one-week").on("click", function () {
+  var currency = $(this).attr("data-currency");
+  chart(358, currency);
+});
+
+$(".one-month").on("click", function () {
+  var currency = $(this).attr("data-currency");
+  chart(335, currency);
+});
+
+$(".one-quarter").on("click", function () {
+  var currency = $(this).attr("data-currency");
+  chart(275, currency);
+});
+
+$(".six-month").on("click", function () {
+  var currency = $(this).attr("data-currency");
+  chart(185, currency);
+});
+
+$(".one-year").on("click", function () {
+  var currency = $(this).attr("data-currency");
+  chart(0, currency);
+});
 
 
 /******************************************************************

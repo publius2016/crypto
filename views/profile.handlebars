@@ -26,24 +26,6 @@
 
   </table>
 </form>
-    <!-- {{#each user.trades}}
-      <tr>
-        <td>{{this.currency}}</td>
-        <td><input class="editable" name="units" id="units{{this.id}}" placeholder="{{this.unit_amount}}"></td>
-        <td>{{this.createdAt}}</td>
-        <td><input class="editable" name="price" id="price{{this.id}}" placeholder="{{this.unit_price_usd}}"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="update" data-id="{{this.id}}">Update</button></td>
-        <td><button class="delete" data-id="{{this.id}}">Delete</button></td>
-      </tr>
-    {{/each}} -->
-    <tbody>
-  </table>
-
-
-<br>
 
   <h2 id="createANewTrade">Create a New Trade</h2>
   <form id="trades" method="POST" action="/newTrade">

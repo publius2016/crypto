@@ -134,7 +134,7 @@ var chartGet = (currencyCounter, currency) => {
     console.log(route);
     var currencyUpper = currency.toUpperCase();
 
-      var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=3&e=CCCAGG";
+      var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=1&e=CCCAGG";
       request(url, (err, response, body) => {
         var chartData = JSON.parse(body);
         // console.log(chartData.Data[365].close);

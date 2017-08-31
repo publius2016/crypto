@@ -97,7 +97,6 @@ form {
     z-index: 1;
 }
 
-#bodyHolder {}
 
 #menu-icon {
     width: 60px;
@@ -184,62 +183,24 @@ form {
     margin-top: 50px;
 }
 
-
-
 #currencyHolder p {
   margin: 10px 0 10px 0;
   padding: 0;
   font-size: 1.3em;
 }
 
-
-
-.currencyData {
-    clear: both;
-    display: block;
-    margin: 20px 0 30px 10px;
-    padding-top: 30px;
-    padding-bottom: 50px;
-    /*border-top: 1px solid #d3d3d3;*/
-}
-
 .currencyTitle {
     float: left;
     width: 100%;
+    border-right: 1px solid #d3d3d3;
 }
 
 .currencyTitle img {
     width: 55px;
     height: 55px;
+    margin-right: 10px;
+    display: inline-block;
     float: left;
-    margin-right: 100px
-}
-
-.currencyTitle h2 {
-    font-size: 1.4em;
-    display: inline;
-    /*margin-left: 6px;*/
-}
-
-.currencyTitle p {
-    font-size: .8em;
-    margin-left: 37px;
-    margin-bottom: 0;
-}
-
-.last_price {
-   /* margin-left: 37px;*/
-    margin-top: 0;
-}
-
-.dataHolder {
-   /* float: right;*/
-}
-
-.dataHolder span {
-/*    float: right;
-*/    margin-right: 20px;
-    font-size: 1.4em;
 }
 
 .card .card-register {
@@ -250,56 +211,12 @@ form {
     align-content: center;
 }
 
-.low {
-    padding: 6px;
-    vertical-align: middle;
-   /* border-top: 0;*/
-    /*border-bottom: 1px solid #ddd;*/
-}
-
-.high {
-    padding: 6px;
-    vertical-align: middle;
-   /* border-top: 0;*/
-   /* border-bottom: 1px solid #ddd;*/
-}
-
-.vol {
-    padding: 6px;
-    vertical-align: middle;
-   /* border-top: 0;*/
-   /* border-bottom: 1px solid #ddd;*/
-}
-
-
-.chg {
-    padding: 6px;
-    vertical-align: middle;
-   /* border-top: 0;*/
-    /*border-bottom: 1px solid #ddd;*/
-}
-
-.percChg {
-    padding: 6px;
-    vertical-align: middle;
-    /*border-top: 0;*/
-    /*border-bottom: 1px solid #ddd;*/
-}
-
-#rowTint {
-  background-color: #f7f7f7;
-  width: 100%;
-}
 
 .table {
   margin-top: 60px;
 }
 
-.tableResponsive {
-    min-height: .01%;
-    padding: 0 60px 0 60px;
 
-}
 
 text-center {
 text-align: none;
@@ -310,18 +227,6 @@ text-right {
 text-align: none;
 }
 
-@media screen and (min-width: 768px) {
-    .col-md-4.offset-md-4.col-sm-6.offset-sm-3.col-10.offset-1 {
-        margin-left: 35%;
-    }
-
-}
-
-@media screen and (min-width: 1006px) {
-    .col-md-4.offset-md-4.col-sm-6.offset-sm-3.col-10.offset-1 {
-        margin-left: 35%;
-    }
-}
 
 .articleHolder {
   width: 90%;
@@ -360,47 +265,9 @@ text-align: none;
   margin: 0 2%;
 }
 
-@media screen and (max-width: 480px) {
-
-  h3 {
-    display: inline;
-  }
-
-  .minHide, .low, .high, .vol, .chg {
-    display: none;
-  }
-
-  thead {
-    display: none;
-  }
-
-  #nav #title {
-    font-size: 40px;
-    letter-spacing: 3px;
-
-  }
-
-  .articleImg {
-    width: 100%;
-
-  }
-
-
-
-}
 .currencyTitle p {
     font-size: .8em;
-    margin-left: 0px;
-    margin-bottom: 0;
-}
-
-.currencyTitle img {
-    width: 55px;
-    height: 55px;
-    float: left;
-  /*  margin-right: 100px*/
-    margin-bottom: 15px
-}
+    margin: 20px 0 0 0;
 }
 
 #menuModal .modal-dialog {
@@ -512,3 +379,66 @@ th.test {
 .tweetHolder .text {
   font-size: 1.1em;
 }
+
+/************************************************************
+HOMEPAGE STYLES
+************************************************************/
+
+
+
+
+
+/************************************************************
+MEDIA QUERIES
+************************************************************/
+
+
+@media screen and (max-width: 480px) {
+
+  h3 {
+    display: inline;
+  }
+
+  #nav #title {
+    font-size: 40px;
+    letter-spacing: 3px;
+
+  }
+
+  .articleImg {
+    width: 100%;
+
+  }
+
+  .currencyTitle h2 {
+    font-size: 1.5em;
+    margin: 10px 0 10px 0;
+  }
+
+  .lowCell, .highCell {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .currencyTitle img {
+    width: 16%;
+    height: 16%;
+  }
+
+  .currencyTitle p {
+      margin: 0;
+  }
+
+} /* END MEDIA QUERY FOR EXTRA SMALL SCREEN */
+
+@media screen and (max-width: 600px) {
+
+  .volCell, .chgCell {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+
+} /* END MEDIA QUERY FOR SMALL SCREEN */
