@@ -12,6 +12,7 @@ var app = express();
 var http = require('http');
 var socketIO = require("socket.io");
 var Sequelize = require("sequelize");
+var cheerio = require("cheerio");
 var db = require("./models");
 var server;
 var io;
@@ -40,5 +41,5 @@ db.sequelize.sync({ force: false }).then(function() {
   // });
 });
 
-require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs, Twitter);
+require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs, Twitter, cheerio);
 require("./controller/htmlRoutes.js")(app, path, bodyParser);

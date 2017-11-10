@@ -131,15 +131,15 @@ $(function () {
     });
   }; // END CHART FUNCTION
 
-  chart("btc");
-  chart("ltc");
-  chart("eth");
-  chart("iot");
-  chart("etc");
-  chart("dsh");
-  chart("xrp");
-  chart("bcc");
-  chart("xmr");
+  // chart("btc");
+  // chart("ltc");
+  // chart("eth");
+  // chart("iot");
+  // chart("etc");
+  // chart("dsh");
+  // chart("xrp");
+  // chart("bcc");
+  // chart("xmr");
 
 
 }); // END READY

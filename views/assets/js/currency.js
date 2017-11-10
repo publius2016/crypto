@@ -32,12 +32,21 @@ CHART API ROUTES
 ******************************************************************/
 
 $("#chart-icon").hide();
+// $(".modal-content").remove();
 
 $.ajax({
   method: "GET",
   url: "/currencyProfile"
 }).done(function(result) {
   console.log(result.currency);
+
+  $.ajax({
+    method: "GET",
+    url: "/" + result.currency + "Details"
+  }).done(function(details) {
+    console.log(details);
+
+  }); // END AJAX ON CURRENCY DETAILS ROUTE
 
   function removeChart(currency) {
     var chartID = "#" + currency + "Modal";
@@ -71,39 +80,105 @@ $.ajax({
   }
 
   tickerDisplay(currency);
-  function chart (currency) {
+
+  function chart (limit, currency) {
     var route = "/" + currency;
+    var idClose = currency + "Chart";
+    var idVol = currency + "Vol";
+
+    chart.destroy();
+    vol.destroy();
+    $("#" + idClose).remove();
+    $("#" + idVol).remove();
+
+    $("#chartHolder").append("<canvas id='" + idClose + "'></canvas>");
+    $("#chartHolder").append("<canvas id='" + idVol + "'></canvas>");
 
     $.get(route, (data) => {
 
       var time = [];
       var close = [];
+      var volume = [];
 
-      for (var i = 335; i < 365; i++) {
+      // console.log("HistoDay: " + JSON.stringify(data.Data[364]));
+
+      for (var i = limit; i < 365; i++) {
         time.push(moment.unix(data.Data[i].time).format('MMMM Do YYYY'));
         close.push(data.Data[i].close);
+        volume.push(data.Data[i].volumefrom);
       }
 
       var chartHolder = currency + "Chart";
       var chartLabel = currency.toUpperCase() + "/USD Closing Price";
-      var ctx = document.getElementById(chartHolder).getContext('2d');
-      var chart = new Chart(ctx, {
+
+      var volHolder = currency + "Vol";
+      var volLabel = currency.toUpperCase() + "Daily High Volume";
+
+      var closeContext = document.getElementById(chartHolder).getContext('2d');
+      var volumeContext = document.getElementById(volHolder).getContext('2d');
+
+      var chart = new Chart(closeContext, {
         type: 'line',
         data: {
             labels: time,
             datasets: [{
                 label: chartLabel,
                 borderColor: 'rgb(74, 169, 86)',
-                data: close,
+                data: close
             }]
         },
         options: {}
-      });
+      }); // END CLOSING PRICE CHART INSTANTIATOR
+
+      var vol = new Chart(volumeContext, {
+        type: 'bar',
+        data: {
+          labels: time,
+          datasets: [{
+              label: volLabel,
+              borderColor: 'rgb(74, 169, 86)',
+              data: volume
+          }]
+        },
+        options: {}
+      }); // END VOLUME CHART INSTANTIATOR
+
+      function destroyCharts() {
+        chart.destroy();
+        vol.destroy();
+      }
     }); // END GET
   }; // END CHART FUNCTION
 
-  $("#chartHolder canvas").attr("id", chartId);
-  chart(currency);
+  // $("#chartHolder canvas").attr("id", chartId);
+  chart(335, currency);
+
+  $(".one-week").on("click", function () {
+    // var currency = $(this).attr("data-currency");
+    console.log(result.currency);
+    chart(358, result.currency);
+  });
+
+  $(".one-month").on("click", function () {
+    // var currency = $(this).attr("data-currency");
+    console.log(result.currency);
+    chart(335, result.currency);
+  });
+
+  $(".one-quarter").on("click", function () {
+    // var currency = $(this).attr("data-currency");
+    chart(275, result.currency);
+  });
+
+  $(".six-month").on("click", function () {
+    // var currency = $(this).attr("data-currency");
+    chart(185, result.currency);
+  });
+
+  $(".one-year").on("click", function () {
+    // var currency = $(this).attr("data-currency");
+    chart(0, result.currency);
+  });
 
 
 
@@ -164,14 +239,35 @@ $.ajax({
 }); // END DONE ON AJAX FOR NEWS
 
 /******************************************************************
-TWITTER API ROUTE
+DESK SCRAPE API ROUTE
 ******************************************************************/
 
-function tweets () {
+$.ajax({
+  method: "GET",
+  url: "/desk"
+}).done(function(result) {
+  // console.log(JSON.stringify(result);
+  var info = result.data;
+  for (var i = 0; i < info.length; i++) {
+    console.log(info[i].title);
+    var $div = $("<div class='articleHolder'>");
+    var title = info[i].title;
+    var author = info[i].author;
+    var description = info[i].description;
+    var url = info[i].link;
+    var imageUrl = info[i].img;
+    var pubDate = info[i].date;
+    // pubDate = pubDate.substring(0, pubDate.indexOf("T"));
+    $div.append("<h3 class='title'>" + title + "</h3>");
+    $div.append("<p class='pubDate'>" + pubDate + "</p>");
+    $div.append("<p class='author'>" + author + "</p>");
+    $div.append("<img class='articleImg' src='" + imageUrl + "' alt='Headline Image'>");
+    $div.append("<p class='description'>" + description + "</p>");
+    $div.append("<a class='newsUrl' href='" + url + "'>" + url + "</a>");
+    $("#coinHolder").append($div);
 
-
-
-}
+  }
+});
 
 
 

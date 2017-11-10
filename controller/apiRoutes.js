@@ -1,6 +1,6 @@
 var db = require("../models");
 
-module.exports = function (app, path, bodyParser, request, BFX, io, fs, Twitter) {
+module.exports = function (app, path, bodyParser, request, BFX, io, fs, Twitter, cheerio) {
 
   var twitterKeys = {
     consumer_key: 'VRWrLHgl3PVTmIefLWZSf3AgM',
@@ -123,7 +123,7 @@ BITFINEX TICKER WEB SOCKET
 /******************************************************************
 CHART API ROUTES
 ******************************************************************/
-currencyName = ["btc", "ltc", "eth", "iot", "etc", "dsh", "xrp", "bcc", "xmr"];
+var currencyName = ["btc", "ltc", "eth", "iot", "etc", "dsh", "xrp", "bcc", "xmr"];
 var currencyClose = [];
 var chartData = {};
 var currencyCounter = 0;
@@ -137,7 +137,7 @@ var chartGet = (currencyCounter, currency) => {
       var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=1&e=CCCAGG";
       request(url, (err, response, body) => {
         var chartData = JSON.parse(body);
-        // console.log(chartData.Data[365].close);
+        // console.log(chartData.Data[365]);
         currencyClose.push(chartData.Data[365].close);
         app.get(route, (req, res) => {
           res.json(chartData);
@@ -150,8 +150,6 @@ var chartGet = (currencyCounter, currency) => {
 }; // END CHARTGET FUNCTION
 
 chartGet(currencyCounter, currencyName[0]);
-
-
 
 
 /******************************************************************
@@ -172,9 +170,108 @@ app.get("/currencyProfile", (req, res) => {
   res.json(currencyType);
 }); // END APP.GET FOR CURRENCY PROFILE
 
+
+
 /******************************************************************
-TWITTER & NEWS API ROUTES
+CURRENCY DETAILS API ROUTES
 ******************************************************************/
+
+var detailsName = ["btc", "ltc", "eth", "iot", "etc", "dsh", "xrp", "bcc", "xmr"];
+// var currencyClose = [];
+var detailsData = {};
+var detailsCounter = 0;
+var detailsGet = (detailsCounter, currency) => {
+  if(detailsCounter < 9) {
+    console.log(currency);
+    var route = "/" + currency + "Details";
+    console.log(route);
+    // var currencyUpper = currency.toUpperCase();
+    if (currency == "btc") {
+      id = "1182"; // ID 1182 is for BTC
+    } else if (currency == "eth") {
+      id = "7605";
+    } else if (currency == "xmr") {
+      id = "5038";
+    } else if (currency == "dsh") {
+      id = "3807";
+    } else if (currency == "ltc") {
+      id = "3808";
+    } else if (currency == "bcc") {
+      id = "202330";
+    } else if (currency == "etc") {
+      id = "5324";
+    } else if (currency == "xrp") {
+      id = "5031";
+    } else if (currency == "iot") {
+      id = "127356";
+    }
+
+    var detailsUrl = "https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id=" + id;
+
+      // var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=1&e=CCCAGG";
+      request(detailsUrl, (err, response, body) => {
+        var detailsData = JSON.parse(body);
+        // console.log(chartData.Data[365]);
+        // currencyClose.push(chartData.Data[365].close);
+        app.get(route, (req, res) => {
+          res.json(detailsData);
+        });
+
+        detailsCounter++;
+        detailsGet(detailsCounter, detailsName[detailsCounter]);
+      }); // END REQUEST
+  }
+}; // END CHARTGET FUNCTION
+
+detailsGet(detailsCounter, detailsName[0]);
+
+
+
+
+/******************************************************************
+TWITTER, NEWS API, COINDESK SCRAPE ROUTES
+******************************************************************/
+
+// https://www.coindesk.com/category/features/
+
+app.get("/desk", (req, res) => {
+  var promise = new Promise((resolve, reject) => {
+
+    request("https://www.coindesk.com/category/features/", (error, response, html) => {
+      if (error) {
+        console.log(error);
+        res.send({message: "Scrape Unsuccessful"});
+      } else {
+        var articleCounter = 0;
+        var $ = cheerio.load(html);
+        var allResults = [];
+
+        $(".post").each(function(i, element) {
+
+          var result = {};
+
+          result.title = $(element).find("h3").find("a").text();
+          result.link = $(element).find("a").attr("href");
+          img = $(element).find("a").text();
+          img = img.substring(img.indexOf("https://"), img.indexOf("class") - 2);
+          result.img = img;
+          result.date = $(element).find("time").text();
+          result.author = $(element).find("cite").find("a").text();
+          result.description = $(element).find(".desc").text();
+
+          allResults.push(result);
+
+        }); // END EACH
+        resolve(allResults);
+      } // END IF/ELSE FOR REQUEST
+    }); // END REQUEST
+  }); // END PROMISE OBJECT INSTANTIATION
+
+  promise.then((data) => {
+    // console.log("Scrape Results Array: " + JSON.stringify(data));
+    res.json({data});
+  });
+});
 
 app.get("/news", (req, res) => {
   var newsKey = "4f846a511c92490bb6e1df37b9da9b7a";
