@@ -121,7 +121,7 @@ BITFINEX TICKER WEB SOCKET
       socket.emit('xrp', { message: xrp[0]});
       socket.emit('bcc', { message: bcc[0]});
       socket.emit('xmr', { message: xmr[0]});
-    }, 5000);
+    }, 2000);
 
   });
 
