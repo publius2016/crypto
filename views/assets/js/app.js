@@ -10,6 +10,7 @@ var socket = io.connect('/');
 function tickerDisplay(currency) {
 
   socket.on(currency, (data) => {
+    // console.log(data.message.LAST_PRICE);
     currencyID = "#"+ currency;
     $(currencyID + " span").empty();
     $(currencyID + " .last_price").append("$" + data.message.LAST_PRICE.toFixed(2));
@@ -38,7 +39,44 @@ tickerDisplay("xmr");
 CHART API ROUTES
 ******************************************************************/
 
+var chartHandle;
+var volHandle;
+var closeContext;
+var volumeContext;
+var chartLabel;
+var volLabel;
+
+function createChart (limit, currency) {
+  var idClose = currency + "Chart";
+  var idVol = currency + "Vol";
+  var chartHolder = currency + "Chart";
+  chartLabel = currency.toUpperCase() + "/USD Closing Price"
+  var volHolder = currency + "Vol";
+  volLabel = currency.toUpperCase() + "Daily High Volume";
+  closeContext = document.getElementById(idClose).getContext('2d');
+  volumeContext = document.getElementById(idVol).getContext('2d');
+}; // END CREATECHART FUNCTION
+
+function updateChart(limit, currency) {
+  $(".chartjs-hidden-iframe").remove();
+  chartHandle.data.labels.pop();
+  chartHandle.data.datasets[0].data = [];
+  volHandle.data.datasets[0].data = [];
+  chartHandle.update();
+  volHandle.update();
+  chart(limit, currency);
+}; // END UPDATECHARTFUNCTION
+
 function chart (limit, currency) {
+  // var chartHandle = {};
+  // var volHandle = {};
+  // if (chartHandle.hasOwnProperty("data") && volHandle.hasOwnProperty("data")) {
+  //   chartHandle.data.datasets[0].data = [];
+  //   volHandle.data.datasets[0].data = [];
+  //   chartHandle.update();
+  //   volHandle.update();
+  // }
+
   var idClose = currency + "Chart";
   var idVol = currency + "Vol";
   var modal = "#" + currency + "Modal";
@@ -48,6 +86,7 @@ function chart (limit, currency) {
   $(modal + " .modal-body").append("<canvas id='" + idClose + "'></canvas>");
   $(modal + " .modal-body").append("<canvas id='" + idVol + "'></canvas>");
   var route = "/" + currency;
+  // createChart(limit, currency);
   $.get(route, (data) => {
 
     var time = [];
@@ -71,7 +110,7 @@ function chart (limit, currency) {
     var closeContext = document.getElementById(chartHolder).getContext('2d');
     var volumeContext = document.getElementById(volHolder).getContext('2d');
 
-    var chart = new Chart(closeContext, {
+    chartHandle = new Chart(closeContext, {
       type: 'line',
       data: {
           labels: time,
@@ -84,7 +123,7 @@ function chart (limit, currency) {
       options: {}
     }); // END CLOSING PRICE CHART INSTANTIATOR
 
-    var vol = new Chart(volumeContext, {
+    volHandle = new Chart(volumeContext, {
       type: 'bar',
       data: {
         labels: time,
@@ -101,39 +140,70 @@ function chart (limit, currency) {
   }); // END GET API CALL FOR CHARTS
 }; // END CHART FUNCTION
 
-chart(335, "btc");
-chart(335, "ltc");
-chart(335, "eth");
-chart(335, "iot");
-chart(335, "etc");
-chart(335, "dsh");
-chart(335, "xrp");
-chart(335, "bcc");
-chart(335, "xmr");
+$("#btcTrigger").on("click", function () {
+  chart(335, "btc");
+});
+
+$("#ltcTrigger").on("click", function () {
+  chart(335, "ltc");
+});
+
+$("#ethTrigger").on("click", function () {
+  chart(335, "eth");
+});
+
+$("#iotTrigger").on("click", function () {
+  chart(335, "iot");
+});
+
+$("#etcTrigger").on("click", function () {
+  chart(335, "etc");
+});
+
+$("#dshTrigger").on("click", function () {
+  chart(335, "dsh");
+});
+
+$("#xrpTrigger").on("click", function () {
+  chart(335, "xrp");
+});
+
+$("#bccTrigger").on("click", function () {
+  chart(335, "bcc");
+});
+
+$("#xmrTrigger").on("click", function () {
+  chart(335, "xmr");
+});
 
 $(".one-week").on("click", function () {
   var currency = $(this).attr("data-currency");
-  chart(358, currency);
+  updateChart(358, currency);
+  // chart(358, currency);
 });
 
 $(".one-month").on("click", function () {
   var currency = $(this).attr("data-currency");
-  chart(335, currency);
+  updateChart(335, currency);
+  // chart(335, currency);
 });
 
 $(".one-quarter").on("click", function () {
   var currency = $(this).attr("data-currency");
-  chart(275, currency);
+  updateChart(275, currency);
+  // chart(275, currency);
 });
 
 $(".six-month").on("click", function () {
   var currency = $(this).attr("data-currency");
-  chart(185, currency);
+  updateChart(185, currency);
+  // chart(185, currency);
 });
 
 $(".one-year").on("click", function () {
   var currency = $(this).attr("data-currency");
-  chart(0, currency);
+  updateChart(0, currency);
+  // chart(0, currency);
 });
 
 

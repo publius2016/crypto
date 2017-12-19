@@ -137,8 +137,8 @@ var chartGet = (currencyCounter, currency) => {
       var url = "https://min-api.cryptocompare.com/data/histoday?fsym=" + currencyUpper + "&tsym=USD&limit=365&aggregate=1&e=CCCAGG";
       request(url, (err, response, body) => {
         var chartData = JSON.parse(body);
-        // console.log(chartData.Data[365]);
-        currencyClose.push(chartData.Data[365].close);
+        // console.log("Chart Data: " + currency + " : " +  chartData.Data.length);
+        // currencyClose.push(chartData.Data[365].close);
         app.get(route, (req, res) => {
           res.json(chartData);
         });
@@ -275,10 +275,11 @@ app.get("/desk", (req, res) => {
 
 app.get("/news", (req, res) => {
   var newsKey = "4f846a511c92490bb6e1df37b9da9b7a";
-  var url = "https://newsapi.org/v1/articles?source=the-economist&sortBy=latest&apiKey=" + newsKey;
+  var url = "https://newsapi.org/v2/top-headlines?q=crypto&sortBy=latest&apiKey=" + newsKey;
+  // var url = "https://newsapi.org/v1/articles?source=the-economist&sortBy=latest&apiKey=" + newsKey;
   // console.log("TEST URL:" + url);
   request(url, (err, response, body) => {
-    if (err) throw ERROR;
+    if (err) throw err;
     // console.log(body);
     res.json(body);
   });

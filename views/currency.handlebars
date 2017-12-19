@@ -4,37 +4,79 @@
   <div class="tableResponsive-currency">
   <div class="jumbotron-currency">
   <div id="currencyHolder">
-    <h1 id="currencyTitle"></h1>
-        <p class="last_price"></p>
-        <p class="low"></p>
-        <p class="high"></p>
-        <p class="vol"></p>
-        <p class="chg"></p>
-        <p class="percChg"></p>
+    <div id="currencyTitle"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Last Price</th>
+          <th>Daily Low</th>
+          <th>Daily High</th>
+          <th>Daily Volume</th>
+          <th>Daily Chg $</th>
+          <th>Daily Chg %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="last_price"></td>
+          <td class="low"></td>
+          <td class="high"></td>
+          <td class="vol"></td>
+          <td class="chg"></td>
+          <td class="percChg"></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div id="currencyData">
 
   </div>
 
-  <div id="chartHolder">
-    <button class="one-week">1WK</button>
-    <button class="one-month">1MO</button>
-    <button class="one-quarter">3MO</button>
-    <button class="six-month">6MO</button>
-    <button class="one-year">1YR</button>
 
-  </div>
 
-  <div id="newsHolder">
-    <h2>News</h2>
+  <ul class="nav nav-tabs" id="contentTab">
+    <li class="active"><a href="#news" data-toggle="tab">News</a></li>
+    <li><a href="#twitterHolder" data-toggle="tab">Social Media</a></li>
+    <li><a href="#charts" data-toggle="tab">Charts</a></li>
+    <li><a href="#details" data-toggle="tab">Details</a></li>
+  </ul>
 
-  </div>
+  <div class="tab-content">
 
-  <div id="twitterHolder">
-    <h2>Tweets</h2>
+    <div class="tab-pane active" id="news">
+      <div id="newsHolder">
+        <h2>News</h2>
+      </div>
+      <div id="coinHolder">
+        <h2>Coin Desk Headlines</h2>
+      </div>
+    </div>
 
-  </div>
+    <div class="tab-pane" id="twitterHolder">
+      <h2>Tweets</h2>
 
-  <div id="coinHolder">
-    <h2>Coin Desk Headlines</h2>
+    </div>
+
+    <div class="tab-pane" id="charts">
+      <h2>Charts</h2>
+      <div id="chartHolder">
+        <button class="one-week">1WK</button>
+        <button class="one-month">1MO</button>
+        <button class="one-quarter">3MO</button>
+        <button class="six-month">6MO</button>
+        <button class="one-year">1YR</button>
+        <canvas id="closeChart"></canvas>
+        <canvas id="volumeChart"></canvas>
+
+      </div>
+
+    </div>
+
+    <div class="tab-pane" id="details">
+      <h2>Currency Details</h2>
+
+    </div>
 
   </div>
 </div>

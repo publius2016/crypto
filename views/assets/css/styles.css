@@ -181,12 +181,48 @@ form {
 
 #currencyHolder {
     margin-top: 50px;
+    width: 100%;
+}
+
+.currencyLink {
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.currencyLink a {
+  text-decoration: none;
+}
+
+.currencyLink img {
+  width: 30px;
+  margin-right: 10px;
 }
 
 #currencyHolder p {
   margin: 10px 0 10px 0;
   padding: 0;
   font-size: 1.3em;
+  display: inline;
+}
+
+#currencyHolder table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.detailItem {
+  display: inline;
+  margin: 0 5px;
+  float: left;
+}
+
+.detailItem h5 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#details h2 {
+  clear: both;
 }
 
 .currencyTitle {
@@ -254,13 +290,12 @@ text-align: none;
 }
 
 #currencyHolder {
-  width: 45%;
   float: left;
-  margin: 0 2%;
+  margin: 0;
 }
 
 #chartHolder {
-  width: 45%;
+  width: 95%;
   float: left;
   margin: 0 2%;
 }
@@ -340,6 +375,10 @@ th.test {
     width: 75px;
 }
 
+#contentTab {
+  clear: both;
+}
+
 #newsHolder {
   width: 45%;
   display: inline-block;
@@ -351,6 +390,18 @@ th.test {
 
 #newsHolder h2 {
 
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+#coinHolder {
+  width: 45%;
+  display: inline-block;
+  float: left;
+  margin: 0 2%;
+}
+
+#coinHolder h2 {
   width: 100%;
   border-bottom: 1px solid #d3d3d3;
 }
