@@ -1,21 +1,13 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
-var path = require("path");
+// var path = require("path");
 var bodyParser = require("body-parser");
-var fs = require("fs");
-var helmet = require("helmet");
-var mysql = require("mysql");
-var request = require("request");
-var BFX = require("bitfinex-api-node");
-var Twitter = require('twitter');
+// var mysql = require("mysql");
 var app = express();
 var http = require('http');
 var socketIO = require("socket.io");
-var Sequelize = require("sequelize");
-var cheerio = require("cheerio");
+// var Sequelize = require("sequelize");
 var db = require("./models");
-var server;
-var io;
 
 
 app.use(bodyParser.json());
@@ -28,18 +20,14 @@ app.set("view engine", "handlebars");
 
 
 var PORT = process.env.PORT || 3000;
-var SQLPORT = process.env.PORT || 8080;
-
-server = http.Server(app);
+var server = http.Server(app);
 server.listen(PORT);
-io = socketIO(server);
+var io = socketIO(server);
 
 
 db.sequelize.sync({ force: false }).then(function() {
-  // app.listen(SQLPORT, function() {
-  //   console.log("App listening on PORT " + SQLPORT);
-  // });
+
 });
 
-require("./controller/apiRoutes.js")(app, path, bodyParser, request, BFX, io, fs, Twitter, cheerio);
-require("./controller/htmlRoutes.js")(app, path, bodyParser);
+require("./controller/apiRoutes.js")(app, bodyParser, io);
+require("./controller/htmlRoutes.js")(app, bodyParser);

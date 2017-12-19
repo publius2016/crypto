@@ -1,4 +1,4 @@
-module.exports = function (app, path, bodyParser) {
+module.exports = function (app, bodyParser) {
 
   app.get("/", (req, res) => {
     res.render("index");

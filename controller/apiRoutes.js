@@ -1,6 +1,11 @@
+var path = require("path");
+var request = require("request");
+var BFX = require("bitfinex-api-node");
+var Twitter = require('twitter');
+var cheerio = require("cheerio");
 var db = require("../models");
 
-module.exports = function (app, path, bodyParser, request, BFX, io, fs, Twitter, cheerio) {
+module.exports = function (app, bodyParser, io) {
 
   var twitterKeys = {
     consumer_key: 'VRWrLHgl3PVTmIefLWZSf3AgM',
@@ -138,7 +143,7 @@ var chartGet = (currencyCounter, currency) => {
       request(url, (err, response, body) => {
         var chartData = JSON.parse(body);
         // console.log("Chart Data: " + currency + " : " +  chartData.Data.length);
-        // currencyClose.push(chartData.Data[365].close);
+        currencyClose.push(chartData.Data[chartData.Data.length - 1].close);
         app.get(route, (req, res) => {
           res.json(chartData);
         });

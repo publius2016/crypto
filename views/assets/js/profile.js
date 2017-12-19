@@ -39,6 +39,7 @@ $(function () {
     method: "GET",
     url: "/trades",
   }).done(function (result) {
+    console.log(result);
 
     for (var i = 0; i < result.trades.length; i++) {
       if(result.trades[i].currency == "btc") {
