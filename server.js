@@ -1,12 +1,9 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
-// var path = require("path");
 var bodyParser = require("body-parser");
-// var mysql = require("mysql");
 var app = express();
 var http = require('http');
 var socketIO = require("socket.io");
-// var Sequelize = require("sequelize");
 var db = require("./models");
 
 
