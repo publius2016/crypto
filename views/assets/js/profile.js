@@ -45,32 +45,29 @@ $(function () {
       if(result.trades[i].currency == "btc") {
         var value = result.close[0];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "btc") {
+      } else if (result.trades[i].currency == "ltc") {
         var value = result.close[1];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "ltc") {
+      } else if (result.trades[i].currency == "eth") {
         var value = result.close[2];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "eth") {
+      } else if (result.trades[i].currency == "iot") {
         var value = result.close[3];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "iot") {
+      } else if (result.trades[i].currency == "etc") {
         var value = result.close[4];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "etc") {
+      } else if (result.trades[i].currency == "dsh") {
         var value = result.close[5];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "dsh") {
+      } else if (result.trades[i].currency == "xrp") {
         var value = result.close[6];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "xrp") {
+      } else if (result.trades[i].currency == "bcc") {
         var value = result.close[7];
         tradeDisplay(value);
-      } else if (result.trades[i].currency == "bcc") {
-        var value = result.close[8];
-        tradeDisplay(value);
       } else if (result.trades[i].currency == "xmr") {
-        var value = result.close[9];
+        var value = result.close[8];
         tradeDisplay(value);
       } // END IF
     } // END FOR

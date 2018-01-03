@@ -51,8 +51,8 @@ BITFINEX TICKER WEB SOCKET
     bws.subscribeTicker('ETCUSD');
     bws.subscribeTicker('DSHUSD');
     bws.subscribeTicker('XRPUSD');
-    bws.subscribeTicker('BCCUSD');
-    bws.subscribeTicker('XMRUSD');
+    // bws.subscribeTicker('BCCUSD');
+    // bws.subscribeTicker('XMRUSD');
 
   });
 
